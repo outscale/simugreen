@@ -201,3 +201,4 @@ cython_debug/
 
 .DS_Store
 .terraform.lock.hcl
+vscode.zip

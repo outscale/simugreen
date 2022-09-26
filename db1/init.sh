@@ -51,5 +51,8 @@ sudo systemctl restart docker
 docker pull postgres:14.1-alpine
 docker pull adminer
 
+# Install tools
+sudo apt-get install unzip -y
+
 # Run containers
-sudo docker compose up -d
+#sudo docker compose up -d
