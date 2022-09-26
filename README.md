@@ -9,7 +9,7 @@ terraform init
 
 ## Platform installation
 
-1. Update OUTSCALE_ACCESSKEYID and OUTSCALE_SECRETKEYID in env_init.sh:
+1. Fill OUTSCALE_ACCESSKEYID and OUTSCALE_SECRETKEYID in env_init_example.sh and rename the file in env_init.sh:
 ```
 export OUTSCALE_ACCESSKEYID=...
 export OUTSCALE_SECRETKEYID=...
