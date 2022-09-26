@@ -1,3 +1,6 @@
+# Update hosts
+cat /home/outscale/hosts | sudo tee --append /etc/hosts
+
 # Initialize the volume
 ## Partitioning the volume
 sudo fdisk /dev/sda << EOF

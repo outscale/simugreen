@@ -1,3 +1,4 @@
-export OUTSCALE_ACCESSKEYID=$(security find-generic-password -w -s osc -a 'ak')
-export OUTSCALE_SECRETKEYID=$(security find-generic-password -w -s osc -a 'sk')
+# Copy it into env_init.sh and set values
+export OUTSCALE_ACCESSKEYID=...
+export OUTSCALE_SECRETKEYID=...
 export OUTSCALE_REGION="eu-west-2"

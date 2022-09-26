@@ -1,3 +1,6 @@
+# Update hosts
+cat /home/outscale/hosts | sudo tee --append /etc/hosts
+
 # Initialize the volume
 ## Partitioning the volume
 sudo fdisk /dev/sda << EOF
@@ -52,4 +55,4 @@ docker pull adminer
 sudo apt-get install unzip -y
 
 # Run containers
-# sudo docker compose up -d
+#sudo docker compose up -d

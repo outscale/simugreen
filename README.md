@@ -1,5 +1,5 @@
 
-## Preconditions
+# Preconditions
 1. Installed Terraform
 2. Access and Private keys for DS Outscale cloud account.
 3. Inititalize Terraform in the project (once after project clonning from Git)
@@ -7,16 +7,16 @@
 terraform init
 ```
 
-## Platform installation
+# Platform installation
 
-1. Fill OUTSCALE_ACCESSKEYID and OUTSCALE_SECRETKEYID in env_init_example.sh and rename the file in env_init.sh:
+## 1. Fill OUTSCALE_ACCESSKEYID and OUTSCALE_SECRETKEYID in env_init_example.sh and rename the file in env_init.sh:
 ```
 export OUTSCALE_ACCESSKEYID=...
 export OUTSCALE_SECRETKEYID=...
 export OUTSCALE_REGION="eu-west-2"
 ```
 
-2. Create platform
+## 2. Create platform
 ```
 ./platform_create.sh
 ```
@@ -25,13 +25,13 @@ The script does the following:
 2. Create "~/.ssh/hackathon.rsa" private key to access this VM.
 3. Create "<vm>_connect.sh" files to connect to the VMs.
 
-3. Destroy platform
+## 3. Destroy platform
 ```
 ./platform_destroy.sh
 ```
 The script destroy all resources in the cloud.
 
-4. Connect to VMs by ssh:
+## 4. Connect to VMs by ssh:
 ```
 ./<vm>_connect.sh
 ```
@@ -51,7 +51,7 @@ Example of its configuration is in <application>/vscode folder:
 To run VSCode in a VM:
 1. Connect by SSH: ```./<app>_connect.sh```
 2. Unzip files with vscode: ```unzip vscode.zip```
-3. Buid the image:
+3. Buid the image (it may take up to 20 minutes):
 ```
 cd <app>/vscode # example: cd app1/vscode
 bash ./build.sh 
@@ -74,14 +74,6 @@ database: postgres
 
 It is prefiled by db_init.sql script in db1.
 
-## Connections between containers
-IP of all VMs can be found in /home/outscale/vms.csv. 
-Example:
-
-```
-app1,78.54.45.95
-ms1,78.54.45.96
-db1,78.54.45.97
-```
-
-Open ports are configured in main.tf Terraform config file.
+# Connections between containers
+VMs can be accessed by their short names: app1, ms1, and db1
+These hosts are added to /etc/hosts of all VMs

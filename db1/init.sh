@@ -55,4 +55,4 @@ docker pull adminer
 sudo apt-get install unzip -y
 
 # Run containers
-#sudo docker compose up -d
+sudo docker compose up -d
