@@ -1,5 +1,5 @@
-src/config.cfg
-*/__pycache__/
+# Config files
+env_init.sh
 
 # Local .terraform directories
 **/.terraform/*
