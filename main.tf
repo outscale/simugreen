@@ -74,7 +74,7 @@ resource "outscale_security_group_rule" "hackathon_adminer" {
 
 resource "outscale_vm" "hackathon_db1" {
   image_id      = "ami-bb490c7e"
-  vm_type       = "tinav5.c8r16p1"
+  vm_type       = "tinav5.c4r8p1"
   keypair_name  = "${outscale_keypair.keypair01.keypair_name}"
   security_group_ids = [outscale_security_group.hackathon_common.security_group_id, outscale_security_group.hackathon_postgre.security_group_id]
   tags {
@@ -167,7 +167,7 @@ resource "outscale_vm" "hackathon_db1" {
 
 resource "outscale_vm" "hackathon_ms1" {
   image_id      = "ami-bb490c7e"
-  vm_type       = "tinav5.c8r16p1"
+  vm_type       = "tinav5.c4r8p1"
   keypair_name  = "${outscale_keypair.keypair01.keypair_name}"
   security_group_ids = [outscale_security_group.hackathon_common.security_group_id]
   tags {
@@ -265,7 +265,7 @@ resource "outscale_vm" "hackathon_ms1" {
 
 resource "outscale_vm" "hackathon_app1" {
   image_id      = "ami-bb490c7e"
-  vm_type       = "tinav5.c8r16p1"
+  vm_type       = "tinav5.c4r8p1"
   keypair_name  = "${outscale_keypair.keypair01.keypair_name}"
   security_group_ids = [outscale_security_group.hackathon_common.security_group_id]
   tags {
