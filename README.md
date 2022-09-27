@@ -63,10 +63,83 @@ If you run your application on this VM in another container make sure that you c
 By default this is /data/code, but you can change it in run.sh script.
 
 # Components
+
+## App1
+One file python application. It watches for new files in **/data/input** folder, process them and output the result in **/data/output**.
+
+The file names must be unique otherwice the result of previous files with this same name will be rewritten by the more recent ones.
+
+
+Example of input file:
+```
+{
+    "1": {
+	    "type": "typeA",
+	    "arguments": {
+            "arg1": "Hello",
+		    "arg2": "world"
+        }
+	},
+    "2": {
+	    "type": "typeB",
+	    "arguments": {"arg1": "Filled !"}
+    },
+    "3": {
+	    "type": "typeA",
+	    "arguments": {
+            "arg1": "Beautiful",
+		    "arg2": "sunny",
+            "arg3": "day"
+        }
+	},
+    "4": {
+        "type": "typeB",
+        "arguments": {}
+    }
+}
+``` 
+
+The numeric first-level keys are task ids. They must be unique within a file.
+- "type" is a command type.
+- "arguments" can be unique for every commmand type
+
+Command processing functions return strings. 
+
+Output file has the same name as the input one with .txt extention. Ex: a234.json -> a234.txt.
+Every line starts with command id, than one space as separator and command output.
+To commands in output file can be in any order.
+
+Example of output file:
+
+```
+1 Hello_world
+2 value
+3 Beautiful_sunnyday
+4 Not filled !
+```
+
+To send/recieve files from remote machine can be used the following commands:
+
+Send file to app1:
+```
+scp -i ~/.ssh/hackathon.rsa /tmp/aa.json outscale@<app1_ip>:/data/input/aa.json
+```
+
+List files in app1 /data/output:
+```
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/hackathon.rsa outscale@<app1_ip> "ls /data/output"
+```
+
+Copy file from app1:
+```
+scp -i ~/.ssh/hackathon.rsa outscale@<app1_ip>:/data/input/aa.json /tmp/
+```
+
 ## Database 1
 This is preinstalled PostgreSQL database.
 
-For debug you can connect it via web interface http://<db1_vm_ip>:8080
+For debug you can connect to it via web interface http://<db1_vm_ip>:8080
+
 host: postgres
 username: postgres
 password: postgres
