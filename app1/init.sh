@@ -56,3 +56,39 @@ sudo apt-get install unzip -y
 
 # Run containers
 # sudo docker compose up -d
+
+# Install Python
+sudo apt-get -y install python3
+sudo apt-get -y install python3-pip
+
+# Install application
+mkdir /data/code
+mkdir /data/input
+mkdir /data/output
+mkdir /data/log
+
+
+# Run app1 as a service
+cat <<EOF > /tmp/app1.service
+[Unit]
+Description=app1
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /home/outscale/app1.py
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo mv /tmp/app1.service /etc/systemd/system/app1.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable app1.service
+sudo systemctl start app1.service
+
+# To stop and restart:
+# sudo systemctl stop app1.service
+# sudo systemctl restart app1.service

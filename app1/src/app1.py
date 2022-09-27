@@ -1,13 +1,12 @@
-import configparser
 import json
 import os
 import time
+import shutil
 
 # Load the config file
 
-CONFIG_FILE = "/tmp/app1.cfg"
-config = configparser.ConfigParser()
-config.read(CONFIG_FILE)
+INPUT_FOLDER = "/data/input"
+OUTPUT_FOLDER = "/data/output"
 
 # Below you will find demo func don't hesitate to try this code using example_input.json as input file
 def funcA(arg1, arg2, arg3=""):
@@ -31,7 +30,7 @@ def main():
     while True:
 
         # List files under the input folder
-        files = os.listdir(config['FILE']['INPUT'])
+        files = os.listdir(INPUT_FOLDER)
 
         # If no file is present we wait for 5 seconds and look again
         if not files: 
@@ -40,36 +39,48 @@ def main():
 
         # We process the first file
         file = files[0]
-        with open(os.path.join(config['FILE']['INPUT'], file), 'r') as f:
-            commands = json.load(f)
+        time.sleep(5) # make sure that file is completely uploaded
+        with open(os.path.join(INPUT_FOLDER, file), 'r') as f:
+            try:
+                commands = json.load(f)
+            except Exception as e:
+                print(e)
+                continue
         
         tmp_path = f"/tmp/{os.path.splitext(file)[0]}.txt"
+        print("tmp_path:", tmp_path)
 
         # For each command within the file perform an action
         with open(tmp_path, 'w') as f:
             for id, command in commands.items():
+                print(f"id: {id}, command: {command}")
 
-                # !!!!!!!!!!!!!!!!!!!!!!!! WIP !!!!!!!!!!!!!!!!!!!
-                # This is where you can add specific processing for each command type
+                
+                try:
+                    # !!!!!!!!!!!!!!!!!!!!!!!! WIP !!!!!!!!!!!!!!!!!!!
+                    # This is where you can add specific processing for each command type
 
-                if command.get("type") == "typeA":
-                    output = funcA(**command.get("arguments"))
+                    if command.get("type") == "typeA":
+                        output = funcA(**command.get("arguments"))
 
-                elif command.get("type") == "typeB":
-                    output = funcB(**command.get("arguments"))
+                    elif command.get("type") == "typeB":
+                        output = funcB(**command.get("arguments"))
 
-                else:
-                    output = f"{command.get('type')} not handled"
+                    else:
+                        output = f"{command.get('type')} not handled"
+                    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    f.write(f"{id} {output}\n")
 
-                f.write(f"{id} {output}\n")
+                except Exception as e:
+                    print(e)
+                    continue
 
         # Once the file is processed delete it
-        os.remove(os.path.join(config['FILE']['INPUT'], file))
+        os.remove(os.path.join(INPUT_FOLDER, file))
 
         # Move the temporary output in the output folder
-        os.replace(tmp_path, os.path.join(config['FILE']['OUTPUT'], f"{os.path.splitext(file)[0]}.txt"))
+        shutil.move(tmp_path, os.path.join(OUTPUT_FOLDER, f"{os.path.splitext(file)[0]}.txt"))
         
 
 if __name__ == "__main__":

@@ -79,7 +79,7 @@ resource "outscale_vm" "hackathon_db1" {
   security_group_ids = [outscale_security_group.hackathon_common.security_group_id, outscale_security_group.hackathon_postgre.security_group_id]
   tags {
     key   = "name"
-    value = "hackathon_app1"
+    value = "hackathon_db1"
   }
   block_device_mappings {
     device_name = "/dev/sdb"
@@ -285,7 +285,7 @@ resource "outscale_vm" "hackathon_app1" {
   # Extract  ssh key to local file in ~/.ssh
   provisioner "local-exec" {
     command = <<EOT
-cat <<EOF >> ~/.ssh/hackathon.rsa
+cat <<EOF > ~/.ssh/hackathon.rsa
 ${outscale_keypair.keypair01.private_key}
 EOF
 EOT
@@ -344,6 +344,18 @@ EOT
   provisioner "file" {
     source      = "hosts"
     destination = "/home/outscale/hosts"
+    connection {
+      type = "ssh"
+      user = "outscale"
+      private_key = "${outscale_keypair.keypair01.private_key}"
+      host = self.public_ip
+    }
+  }
+
+  # Copy app1.py to VM
+  provisioner "file" {
+    source      = "app1/src/app1.py"
+    destination = "/home/outscale/app1.py"
     connection {
       type = "ssh"
       user = "outscale"
