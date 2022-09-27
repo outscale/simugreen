@@ -41,6 +41,22 @@ resource "outscale_security_group_rule" "hackathon_vscode" {
   }
 }
 
+# SG common for all VMs
+resource "outscale_security_group" "hackathon_web" {
+    security_group_name = "hackathon-web"
+}
+
+resource "outscale_security_group_rule" "hackathon_web" {
+  flow              = "Inbound"
+  security_group_id = outscale_security_group.hackathon_web.id
+  rules {
+    from_port_range = "8000"
+    to_port_range   = "8000"
+    ip_protocol     = "tcp"
+    ip_ranges       = ["0.0.0.0/0"]
+  }
+}
+
 # SG Postgres
 resource "outscale_security_group" "hackathon_postgre" {
     security_group_name = "hackathon-postgres"
@@ -169,7 +185,7 @@ resource "outscale_vm" "hackathon_ms1" {
   image_id      = "ami-bb490c7e"
   vm_type       = "tinav5.c4r8p1"
   keypair_name  = "${outscale_keypair.keypair01.keypair_name}"
-  security_group_ids = [outscale_security_group.hackathon_common.security_group_id]
+  security_group_ids = [outscale_security_group.hackathon_common.security_group_id,outscale_security_group.hackathon_web.security_group_id]
   tags {
     key   = "name"
     value = "hackathon_ms1"
@@ -232,6 +248,18 @@ resource "outscale_vm" "hackathon_ms1" {
   provisioner "file" {
     source      = "hosts"
     destination = "/home/outscale/hosts"
+    connection {
+      type = "ssh"
+      user = "outscale"
+      private_key = "${outscale_keypair.keypair01.private_key}"
+      host = self.public_ip
+    }
+  }
+
+  # Copy ms1 to VM
+  provisioner "file" {
+    source      = "ms1/src/app.py"
+    destination = "/home/outscale/app.py"
     connection {
       type = "ssh"
       user = "outscale"

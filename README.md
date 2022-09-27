@@ -93,11 +93,17 @@ By default, this is /data/code, but you can change it in run.sh script.
 
 # Components
 
-## App1
-One-file python application. It watches for new files in VM's local **/data/input** folder, processes them, and outputs the result in **/data/output**.
+## Application 1
+Python application which is running as a service.
+
+To stop: ```sudo systemctl stop app1.service```
+To start: ```sudo systemctl start app1.service```
+To restart: ```sudo systemctl restart app1.service```
+To see service log: ```journalctl -u app1.service```
+
+The application watches for new files in VM's local **/data/input** folder, processes them, and outputs the result in **/data/output**.
 
 The file names must be unique otherwise the result of previous files with the same name will be rewritten by the more recent one.
-
 
 Example of input file:
 ```
@@ -165,6 +171,21 @@ Copy file from app1 to the local machine:
 ```
 scp -i ~/.ssh/hackathon.rsa outscale@<app1_ip>:/data/input/aa.json /tmp/
 ```
+
+## Microservice 1
+A simple Web server. Can be used by Application 1 for some commands.
+
+The source code is in ms1/src/app.py.
+
+In the VM the file is copied and running in /home/outscale/ folder as a service.
+
+To stop: ```sudo systemctl stop ms1.service```
+To start: ```sudo systemctl start ms1.service```
+To restart: ```sudo systemctl restart ms1.service```
+To see service log: ```journalctl -u ms1.service```
+
+It can be accesed via url ```http://<ms1_ip>:8000/...```
+From other VMs <ms1_ip> can be replaced by **ms1**
 
 ## Database 1
 PostgreSQL database.

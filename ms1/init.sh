@@ -56,3 +56,40 @@ sudo apt-get install unzip -y
 
 # Run containers
 #sudo docker compose up -d
+
+# Install Python and modules
+sudo apt install python3 -y
+sudo apt install python3-pip -y
+sudo pip install psycopg2-binary
+sudo pip install flask
+sudo apt install python3-flask -y
+pip install psycopg2-binary
+pip install flask
+
+# Run ms1 as a service
+cat <<EOF > /tmp/ms1.service
+[Unit]
+Description=ms1
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/home/outscale
+ExecStart=/usr/bin/flask run --host=0.0.0.0 -p 8000
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo mv /tmp/ms1.service /etc/systemd/system/ms1.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable ms1.service
+sudo systemctl start ms1.service
+
+# To stop and restart:
+#   sudo systemctl stop ms1.service
+#   sudo systemctl restart ms1.service
+# To see service log:
+#   journalctl -u ms1.service

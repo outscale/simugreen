@@ -1,43 +1,40 @@
-import configparser
 import psycopg2
 from flask import Flask, jsonify, request
-from marshmallow import ValidationError
 
-from .schema import OutputSchema
+HOST = "db1"
+DATABASE = "postgres"
+USERNAME = "postgres"
+PASSWORD = "postgres"
 
 app = Flask(__name__)
 
-config = configparser.ConfigParser()
-config.read('config.cfg')
-
-conn = psycopg2.connect(
-        host=config['POSTGRES']['Host'],
-        database=config['POSTGRES']['Database'],
-        user=config['POSTGRES']['User'],
-        password=config['POSTGRES']['Password'])
-
 @app.route("/")
 def hello_world():
-    return "<p>Welcome to the hackaton app.</p>"
+    return "<p>Welcome to the hackaton app!</p>"
 
-@app.route('/send_output', methods=['POST'])
-def send_output():
-    
-    request_data = request.json
-    schema = OutputSchema()
 
-    #Check that the form contains the requested fields
+@app.route('/test')
+def test():
+    return "test"
+
+@app.route('/method1', methods=['GET'])
+def method1():
+
     try:
-        result = schema.load(request_data)
-    
-    # Otherwise throw a 400 error
-    except ValidationError as err:
-        print("Unvalid json")
-        return jsonify(err.messages), 400
+        conn = psycopg2.connect(
+            host=HOST,
+            database=DATABASE,
+            user=USERNAME,
+            password=PASSWORD)
 
-    cur = conn.cursor()
-    conn.commit()
-    cur.close()
-    
-    #-> Check that the id exist inside the Db
-    return "<p>Output Succesfully return</p>"
+        cur = conn.cursor()
+        cur.execute("""SELECT * FROM quote LIMIT 2""")
+        items = cur.fetchall()
+
+        cur.close()
+        conn.close()
+
+        return jsonify(items), 200
+
+    except Exception as e:
+        return jsonify(e.messages), 400
