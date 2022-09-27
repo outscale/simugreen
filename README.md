@@ -2,10 +2,10 @@
 # Preconditions
 1. GitHub account
 It's free. You start by forking https://github.com/outscale-dev/hackathon202210.
-Your delivery is updated project in your account.
+Your delivery is an updated project in your account.
 
 2. Linux or Mac computer
-The scripts in this project are for bash. If you have Windows computer you can use a VM running in VirtualBox on your computer or in DS Outscale cloud.
+The scripts in this project are for the bash. If you have a Windows computer you can use a VM running in VirtualBox on your computer or in DS Outscale cloud.
 
 3. Installed Terraform
 We use Terraform to deploy the environment into the cloud. Please [install it](https://learn.hashicorp.com/tutorials/terraform/install-cli).
@@ -22,8 +22,8 @@ Every team has a separate account. There are several ways of working with it.
 
 # Platform installation
 
-## Inititalize Terraform in the project (once after project clonning from GitHub)
-Run it in project folder:
+## Initialize Terraform in the project (once after project cloning from GitHub)
+Run it in the project folder:
 ```
 terraform init
 ```
@@ -36,12 +36,12 @@ export OUTSCALE_SECRETKEYID=...
 export OUTSCALE_REGION="eu-west-2"
 ```
 
-## Create platform
+## Create a platform
 ```
 ./platform_create.sh
 ```
 The script does the following:
-1. Create virtual machines, security groups and other environment elements. 
+1. Create virtual machines, security groups, and other environmental elements. 
 2. Create "~/.ssh/hackathon.rsa" private key to access this VM by ssh. The same key for all VMs.
 3. Create "<vm>_connect.sh" files to connect to the VMs.
 
@@ -53,8 +53,8 @@ If you want to restart your work or test your updated scripts you have first des
 ```
 ./platform_destroy.sh
 ```
-The script destroy ALL resources in the cloud.
-Than you can re-create it again.
+The script destroys ALL resources in the cloud.
+Then you can re-create it again.
 
 ## Connect to VMs by ssh:
 When the platform is up, you can connect to machines by SSH. To simplify this the scripts are created in the project root for all VMs.
@@ -64,12 +64,12 @@ When the platform is up, you can connect to machines by SSH. To simplify this th
 ```
 Where <vm> is app1, ms1, or db1.
 
-This files are re-created by platform_create.sh script on every platform re-creation.
+These files are re-created by platform_create.sh script on every platform re-creation.
 
 # Running VSCode on a virtual machine
 You can use whatever IDE you want to work with code. VS Code is one of the most popular. To simplify your work with code in the VMs we prepare it for you.
 
-You can run VSCode on any VM. It is not running automatically to avoid unnecessary resources consumption.
+You can run VSCode on any VM. It is not running automatically to avoid unnecessary resource consumption.
 You can run it manually in a docker container. 
 
 Example of its configuration is in <application>/vscode folder:
@@ -80,7 +80,7 @@ Example of its configuration is in <application>/vscode folder:
 To run VSCode in a VM:
 1. Connect by SSH: ```./<app>_connect.sh```
 2. Unzip files with vscode: ```unzip vscode.zip```
-3. Buid the image (it may take up to 20 minutes):
+3. Build the image (it may take up to 20 minutes):
 ```
 cd <app>/vscode # example: cd app1/vscode
 bash ./build.sh 
@@ -88,15 +88,15 @@ bash ./build.sh
 4. Run container with VSCode: ```bash ./run.sh```
 5. Open VSCode in your browser: http://<vm_ip>:3000, where <vm_ip> can be found in <app>_connect.sh script.
 
-If you run your application on this VM in another container make sure that you code is mapped to the service as a local volume pointed to the same local folder.
-By default this is /data/code, but you can change it in run.sh script.
+If you run your application on this VM in another container make sure that your code is mapped to the service as a local volume pointed to the same local folder.
+By default, this is /data/code, but you can change it in run.sh script.
 
 # Components
 
 ## App1
-One-file python application. It watches for new files in VM's local **/data/input** folder, processes them and outputs the result in **/data/output**.
+One-file python application. It watches for new files in VM's local **/data/input** folder, processes them, and outputs the result in **/data/output**.
 
-The file names must be unique otherwice the result of previous files with the same name will be rewritten by the more recent one.
+The file names must be unique otherwise the result of previous files with the same name will be rewritten by the more recent one.
 
 
 Example of input file:
@@ -130,17 +130,17 @@ Example of input file:
 
 The numeric first-level keys are task ids. They must be unique within a file.
 - "type" is a command type.
-- "arguments" can be unique for every commmand type
+- "arguments" can be unique for every command type
 
 Every command is processed by its function in the app1 (see /app1/src/app1.py).
 
-The output for all commands is string.
+The output for all commands is a string.
 The outputs are saved in the output file.
-Output file has the same name as the input one, but with .txt extention. Ex: a234.json -> a234.txt.
-Every line starts with command id, than one space as separator followed by command output.
+The output file has the same name as the input one, but with .txt extension. Ex: a234.json -> a234.txt.
+Every line starts with command id, then one space as separator followed by command output.
 Commands in the output file can be in any order.
 
-Example of output file:
+Example of an output file:
 
 ```
 1 Hello_world
@@ -149,9 +149,9 @@ Example of output file:
 4 Not filled !
 ```
 
-To send/recieve files from remote machine can be used the following commands:
+To send/receive files from a remote machine can be used the following commands:
 
-Send file from local machine to app1:
+Send a file from the local machine to app1:
 ```
 scp -i ~/.ssh/hackathon.rsa /tmp/aa.json outscale@<app1_ip>:/data/input/aa.json
 ```
@@ -161,7 +161,7 @@ List files in app1 /data/output:
 ssh -o StrictHostKeyChecking=no -i ~/.ssh/hackathon.rsa outscale@<app1_ip> "ls /data/output"
 ```
 
-Copy file from app1 to local machine:
+Copy file from app1 to the local machine:
 ```
 scp -i ~/.ssh/hackathon.rsa outscale@<app1_ip>:/data/input/aa.json /tmp/
 ```
@@ -169,9 +169,9 @@ scp -i ~/.ssh/hackathon.rsa outscale@<app1_ip>:/data/input/aa.json /tmp/
 ## Database 1
 PostgreSQL database.
 
-It is prefiled by db1/db_init.sql script in.
+It is prefilled by db1/db_init.sql script in.
 
-For debug you can connect to it via web interface http://<db1_vm_ip>:8080 using these connection parameters:
+For debugging you can connect to it via web interface http://<db1_vm_ip>:8080 using these connection parameters:
 
 host: postgres
 username: postgres
