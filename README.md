@@ -12,12 +12,13 @@ We use Terraform to deploy the environment into the cloud. Please [install it](h
 
 
 4. Access and Secret keys for DS Outscale cloud account.
+
 Every team has a separate account. There are several ways of working with it.
+
 - [Terraform](https://www.terraform.io/) - automation tool. 
     - See [OUTSCALE Provider](https://registry.terraform.io/providers/outscale-dev/outscale/latest/docs)
 - [Cockpit](https://cockpit.outscale.com/login/) - Web UI. Normally, you don't need to use it, but if you want please use AccessKey as login and SecretKey as password.
 - [VS Code plugin osc-viewer](https://marketplace.visualstudio.com/items?itemName=outscale.osc-viewer)
-
 
 
 # Platform installation
@@ -43,7 +44,7 @@ export OUTSCALE_REGION="eu-west-2"
 The script does the following:
 1. Create virtual machines, security groups, and other environmental elements. 
 2. Create "~/.ssh/hackathon.rsa" private key to access this VM by ssh. The same key for all VMs.
-3. Create "<vm>_connect.sh" files to connect to the VMs.
+3. Create ```<vm>_connect.sh``` files to connect to the VMs.
 
 Be patient. It takes about 20 minutes.
 
@@ -62,7 +63,7 @@ When the platform is up, you can connect to machines by SSH. To simplify this th
 ```
 ./<vm>_connect.sh
 ```
-Where <vm> is app1, ms1, or db1.
+Where ```vm``` is app1, ms1, or db1.
 
 These files are re-created by platform_create.sh script on every platform re-creation.
 
@@ -72,7 +73,7 @@ You can use whatever IDE you want to work with code. VS Code is one of the most 
 You can run VSCode on any VM. It is not running automatically to avoid unnecessary resource consumption.
 You can run it manually in a docker container. 
 
-Example of its configuration is in <application>/vscode folder:
+Example of its configuration is in ```<application>/vscode``` folder:
     - Dockerfile - install all needed tools here
     - build.sh - Image compilation script
     - run.sh - Run container with VSCode.
@@ -86,7 +87,7 @@ cd <app>/vscode # example: cd app1/vscode
 bash ./build.sh 
 ```
 4. Run container with VSCode: ```bash ./run.sh```
-5. Open VSCode in your browser: http://<vm_ip>:3000, where <vm_ip> can be found in <app>_connect.sh script.
+5. Open VSCode in your browser: ```http://<vm_ip>:3000```, where ```<vm_ip>``` can be found in ```<app>_connect.sh``` script.
 
 If you run your application on this VM in another container make sure that your code is mapped to the service as a local volume pointed to the same local folder.
 By default, this is /data/code, but you can change it in run.sh script.
@@ -185,14 +186,14 @@ To restart: ```sudo systemctl restart ms1.service```
 To see service log: ```journalctl -u ms1.service```
 
 It can be accesed via url ```http://<ms1_ip>:8000/...```
-From other VMs <ms1_ip> can be replaced by **ms1**
+From other VMs ```<ms1_ip>``` can be replaced by **ms1**
 
 ## Database 1
 PostgreSQL database.
 
 It is prefilled by db1/db_init.sql script in.
 
-For debugging you can connect to it via web interface http://<db1_vm_ip>:8080 using these connection parameters:
+For debugging you can connect to it via web interface ```http://<db1_vm_ip>:8080``` using these connection parameters:
 
 host: postgres
 username: postgres
