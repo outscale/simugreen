@@ -63,14 +63,40 @@ When the platform is up, you can connect to machines by SSH. To simplify this th
 ```
 ./<vm>_connect.sh
 ```
-Where ```vm``` is app1, ms1, or db1.
+Where ```<vm>``` is app1, ms1, or db1.
 
 These files are re-created by platform_create.sh script on every platform re-creation.
 
-# Running VSCode on a virtual machine
-You can use whatever IDE you want to work with code. VS Code is one of the most popular. To simplify your work with code in the VMs we prepare it for you.
+# Connect to VMs from VS Code remotely
 
-You can run VSCode on any VM. It is not running automatically to avoid unnecessary resource consumption.
+You can use whatever IDE you want to work with code. VS Code is one of the most popular. 
+You can connect it remotely on your computer to any VM.
+
+1. Install [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) plugin in VS Code on your computer.
+2. Connect to VM by SSH
+3. Install openssh-server:
+```
+sudo apt-get install openssh-server -y
+```
+4. In your VSC open command panel (Command+Shift+P on Mac) and select: 
+```Remote-SSH: Open SSH Configuration File...```
+5. Select those of your account (/Users/<user>/.ssh/config on Mac) and add hosts for every VM:
+```
+Host <vm_ip>
+	HostName <vm_ip>
+	User outscale
+    IdentityFile  ~/.ssh/hackathon.rsa
+```
+4. Open command panel (Command+Shift+P on Mac) and select: 
+```Remote-SSH: Connect to Host...```
+5. Enter VM's ip. 
+You can see and modify any files on this VM as if VSC is running on this VM. You can also open terminal.
+
+# Running VSCode on a virtual machine
+
+You can also run VSCode as a Web application directly on VMs and work with it via any browser.
+
+It is not running automatically to avoid unnecessary resource consumption.
 You can run it manually in a docker container. 
 
 Example of its configuration is in ```<application>/vscode``` folder:
