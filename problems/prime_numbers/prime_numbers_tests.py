@@ -6,7 +6,7 @@ from prime_numbers import prime_list
 The original implemented function is the most naive functional approach we found. 
 Different caching and mathematics solutions can improve the perofrmances"""
 
-class TestPrimeNumbersMethod(unittest.TestCase):
+class TestPrimeNumbersProblem(unittest.TestCase):
 
     def test_negatives(self):
         self.assertEqual(prime_list(-2), [])
