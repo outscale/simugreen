@@ -56,3 +56,8 @@ sudo apt-get install unzip -y
 
 # Run containers
 sudo docker compose up -d
+
+# Install powertop (must be installed on all VMs!)
+mkdir /data/logs
+mkdir /data/metrics
+sudo apt install powertop -y

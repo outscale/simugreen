@@ -88,3 +88,9 @@ sudo systemctl start app1.service
 # To stop and restart:
 # sudo systemctl stop app1.service
 # sudo systemctl restart app1.service
+
+
+# Install powertop (must be installed on all VMs!)
+mkdir /data/logs
+mkdir /data/metrics
+sudo apt install powertop -y

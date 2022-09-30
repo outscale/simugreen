@@ -89,3 +89,8 @@ sudo systemctl start ms1.service
 #   sudo systemctl restart ms1.service
 # To see service log:
 #   journalctl -u ms1.service
+
+# Install powertop (must be installed on all VMs!)
+mkdir /data/logs
+mkdir /data/metrics
+sudo apt install powertop -y

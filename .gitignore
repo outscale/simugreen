@@ -204,3 +204,7 @@ cython_debug/
 vscode.zip
 
 hosts
+
+metrics/output/*
+metrics/totals/*
+metrics/metrics/*
