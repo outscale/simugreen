@@ -1,0 +1,20 @@
+{"1":{
+	"type": "typeA",
+	"arguments": {"arg1": "Obra",
+		"arg2": "Guga"}
+	},
+"2": {
+	"type": "typeB",
+	"arguments": {"arg1": "Prima"}
+},
+"3":{
+	"type": "typeA",
+	"arguments": {"arg1": "Dirot",
+		"arg2": "pufff",
+        "arg3": "key"}
+	},
+"4":{
+    "type": "typeB",
+    "arguments": {}
+}
+}
