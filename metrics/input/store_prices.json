@@ -1,0 +1,62 @@
+{
+	"1": {
+		"type": "clone_product",
+		"arguments": {"product_id": 1, "new_product_id": 100, "coef": 2}
+	},
+	"2": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"3": {
+		"type": "clone_product",
+		"arguments": {"product_id": 2, "new_product_id": 100, "coef": 5}
+	},
+	"5": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"6": {
+		"type": "clone_product",
+		"arguments": {"product_id": 2, "new_product_id": 100, "coef": 3}
+	},
+	"7": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"8": {
+		"type": "clone_product",
+		"arguments": {"product_id": 3, "new_product_id": 100, "coef": 0.2}
+	},
+	"9": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"10": {
+		"type": "clone_product",
+		"arguments": {"product_id": 1, "new_product_id": 100, "coef": 0.5}
+	},
+	"11": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"12": {
+		"type": "clone_product",
+		"arguments": {"product_id": 3, "new_product_id": 100, "coef": 5}
+	},
+	"13": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"14": {
+		"type": "clone_product",
+		"arguments": {"product_id": 3, "new_product_id": 100, "coef": 5}
+	},
+	"15": {
+		"type": "sum_of_prices",
+		"arguments": {"product_id": 100}
+	},
+	"16": {
+		"type": "delete_product",
+		"arguments": {"product_id": 100}
+	}
+}

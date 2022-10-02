@@ -80,6 +80,6 @@ echo
 echo "==========================================================="
 echo "Execution time: $value"
 echo "Correctness: $correctness"
-echo "Energy: $energy (watts)"
+echo "Energy: $energy (Wh)"
 echo "==========================================================="
 echo 

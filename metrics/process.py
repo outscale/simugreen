@@ -19,9 +19,11 @@ def process_powertop():
     def process_file(path):
 
         def process_line(line):
+            time_sec = 15 # time value of powertop. i.e. the number of seconds in one interval
             block = re.search("([0-9]+ .?W)", line).group(1)
             value, unit = re.search('([0-9]*)[ \t]*(.*)', block).groups()
             
+            # convert value to Watts
             value = int(value)
             if unit == 'mW':
                 value = value / 1000
@@ -29,6 +31,9 @@ def process_powertop():
                 value = value / 1000000
             elif  unit == 'kW':
                 value = value * 1000
+
+            # convert Watts in Wh
+            value = (value * time_sec) / 3600
             return value
 
         with open(os.path.join('metrics', path)) as f:
@@ -61,8 +66,8 @@ def process_output():
                 output = sorted([i.strip() for i in f.readlines() if len(i.strip()) > 0])
             if expected != output:
                 print(f"Error in {file}")
-                print(expected)
-                print(output)
+                print("Expected:", expected)
+                print("Received output:", output)
                 out.write(f"{file} - ERROR\n")
             else:
                 out.write(f"{file} - OK\n")

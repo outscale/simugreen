@@ -3,28 +3,23 @@ import os
 import time
 import shutil
 
-# Load the config file
+from store_price import clone_product, sum_of_prices, delete_product
+from prime_numbers import prime_numbers, sum_prime_numbers
 
-INPUT_FOLDER = "/data/input"
+# See README.md for details
+
+# Don't forget to relaod the service after any code change: 
+#   ./app1_connect.sh
+#   sudo systemctl restart app1.service
+# 
+# To see the errors:
+#   ./app1_connect.sh
+#   journalctl -u app1.service
+
+# DO NOT CHANGE THESE CONSTANTS
+INPUT_FOLDER = "/data/input" 
 OUTPUT_FOLDER = "/data/output"
 
-# Below you will find demo func don't hesitate to try this code using example_input.json as input file
-def funcA(arg1, arg2, arg3=""):
-    """
-    This is an example function
-    Concatenate multiple string, note that arg3 is optional
-    """
-    return f"{arg1}_{arg2}{arg3}"
-
-def funcB(arg1=None):
-    """
-    This is an example function
-    Check if an argument was passed. if so return it else return default message
-    """
-    if arg1:
-        return arg1
-    else:
-        return "Not filled !"
 
 def main():
     while True:
@@ -55,20 +50,21 @@ def main():
             for id, command in commands.items():
                 print(f"id: {id}, command: {command}")
 
-                
                 try:
-                    # !!!!!!!!!!!!!!!!!!!!!!!! WIP !!!!!!!!!!!!!!!!!!!
-                    # This is where you can add specific processing for each command type
-
-                    if command.get("type") == "typeA":
-                        output = funcA(**command.get("arguments"))
-
-                    elif command.get("type") == "typeB":
-                        output = funcB(**command.get("arguments"))
+                    command_type = command.get("type")
+                    if command_type == "prime_numbers":
+                        output = prime_numbers(**command.get("arguments"))
+                    elif command_type == "sum_prime_numbers":
+                        output = sum_prime_numbers(**command.get("arguments"))    
+                    elif command_type == "clone_product":
+                        output = clone_product(**command.get("arguments"))        
+                    elif command_type == "delete_product":
+                        output = delete_product(**command.get("arguments"))
+                    elif command_type == "sum_of_prices":
+                        output = sum_of_prices(**command.get("arguments"))      
 
                     else:
                         output = f"{command.get('type')} not handled"
-                    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                     f.write(f"{id} {output}\n")
 

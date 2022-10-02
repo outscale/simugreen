@@ -1,0 +1,46 @@
+{
+	"1": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 100000}
+	},
+	"2": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 598}
+	},
+	"3":{
+		"type": "prime_numbers",
+		"arguments": {"n": 486}
+	},
+	"4":{
+		"type": "prime_numbers",
+		"arguments": {"n": 10000}
+	},
+	"5":{
+		"type": "prime_numbers",
+		"arguments": {"n": 100}
+	},
+	"6": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 90401}
+	},
+	"7": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 89541}
+	},
+	"8": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 78459}
+	},
+	"9": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 56910}
+	},
+	"10": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 42741}
+	},
+	"11": {
+		"type": "sum_prime_numbers",
+		"arguments": {"n": 508900}
+	}
+}

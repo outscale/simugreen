@@ -208,3 +208,5 @@ hosts
 metrics/output/*
 metrics/totals/*
 metrics/metrics/*
+
+tmp
