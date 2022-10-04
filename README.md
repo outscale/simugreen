@@ -84,13 +84,13 @@ Think about:
 # Preconditions
 1. GitHub account
 
-You need a GitHub account. Please create it. It's free. You start by forking https://github.com/outscale-dev/hackathon202210 into your account.
+You need a GitHub account. You start by forking [this repository](https://github.com/outscale-dev/hackathon202210) into your GitHub account.
 
 Your delivery is a GitHab repository with an updated project.
 
 2. Linux or Mac computer
 
-The scripts in this project are for the bash. If you have a Windows computer you can use a VM running in VirtualBox on your computer or in DS Outscale cloud.
+The scripts in this project are for the bash shell. If you have a Windows computer you can use a virtual machine running in VirtualBox on your computer or a virtual machine in DS Outscale cloud.
 
 3. Installed Terraform
 
@@ -118,7 +118,7 @@ Run it once after project cloning from GitHub in the project folder:
 ```
 terraform init
 ```
-This creates several folders to keep Terraform states. Don't touch them. They are managed by Terraform and excluded from version control.
+This creates several folders to keep Terraform states. Don't touch them. They are managed by Terraform and excluded from the version control.
 
 ## Set Access and Secret keys
 
@@ -363,6 +363,6 @@ cd metrics
 ./start.sh
 ```
 
-The script sends the files from ```metrics/input``` to app1, waits for them to be processed, checks the output, and calculates the power consumption.
+The script sends the files from [metrics/input](metrics/input) to app1, waits for them to be processed, checks the output, and calculates the power consumption.
 
 See [metrics/README.md](metrics/README.md) for detailes.

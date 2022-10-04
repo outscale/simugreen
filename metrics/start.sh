@@ -22,9 +22,15 @@ $SSH outscale@$db1ip "nohup sudo powertop --csv=/data/metrics/power.csv --time=1
 $SSH outscale@$app1ip "sudo killall powertop; sudo rm -rf /data/metrics/*" 
 $SSH outscale@$app1ip "nohup sudo powertop --csv=/data/metrics/power.csv --time=15 --iteration=1000 > /data/logs/powertop.log 2> /data/logs/powertop.err < /dev/null &" 
 
+# Start collecting traffic on all VMs
+$SSH outscale@$ms1ip "sudo killall ifstat; sudo rm -rf /data/metrics/ifstat.txt"
+$SSH outscale@$ms1ip "nohup ifstat -n -t -w -i eth0 > /data/metrics/ifstat_ms1.txt 2> /data/logs/ifstat.err < /dev/null &" 
 
-# Start collecting traffic metrics on all VMs
-# - TODO -
+$SSH outscale@$db1ip "sudo killall ifstat; sudo rm -rf /data/metrics/ifstat.txt"
+$SSH outscale@$db1ip "nohup ifstat -n -t -w -i eth0 > /data/metrics/ifstat_db1.txt 2> /data/logs/ifstat.err < /dev/null &"
+
+$SSH outscale@$app1ip "sudo killall ifstat; sudo rm -rf /data/metrics/ifstat.txt"
+$SSH outscale@$app1ip "nohup ifstat -n -t -w -i eth0 > /data/metrics/ifstat_app1.txt 2> /data/logs/ifstat.err < /dev/null &"
 
 # Log test start timestamp
 date > metrics/start_date.txt
@@ -51,20 +57,16 @@ done
 # Log test stop timestamp
 date > metrics/stop_date.txt
 
-# Collect energy consumption files from all vms
+# Collect mitric files from all vms
 $SCP outscale@$app1ip:/data/metrics/* metrics/
 $SCP outscale@$db1ip:/data/metrics/* metrics/
 $SCP outscale@$ms1ip:/data/metrics/* metrics/
-
-# Collect traffic files from all vms
-# - TODO -
 
 # Collect output files
 $SCP outscale@$app1ip:/data/output/* output/
 
 # Process collected files
 ./process.py
-
 
 # === Outputs ===
 # 1. Total consumption of all VMs in Watts
@@ -75,11 +77,17 @@ $SCP outscale@$app1ip:/data/output/* output/
 value=`cat totals/time.txt`
 correctness=`cat totals/correctness.txt`
 energy=`cat totals/energy.txt`
+idle_compute_energy=`cat totals/compute_idle_cons.txt`
+traffic=`cat totals/traffic.txt`
+total=`cat totals/total.txt`
 
 echo 
 echo "==========================================================="
 echo "Execution time: $value"
 echo "Correctness: $correctness"
-echo "Energy: $energy (Wh)"
+echo "VM consumption: $energy (Wh)"
+echo "Idle compute consumption: $idle_compute_energy (Wh)"
+echo "$traffic"
+echo "TOTAL: $total(Wh)"
 echo "==========================================================="
 echo 

@@ -87,7 +87,11 @@ resource "outscale_security_group_rule" "hackathon_adminer" {
 }
 
 ########### VM with Database 1 ###########
-
+# Note: vm_type defines the resources of VM: 
+#   v5 - CPU generation. Possible values: [1..5], where 5 is the last generation
+#   c4 - the number of virtual cores (=4)
+#   r8 - The number of GB RAM (=8)
+#   p1 - performance. Possible values: [1,2,3], where 1 is highest
 resource "outscale_vm" "hackathon_db1" {
   image_id      = "ami-bb490c7e"
   vm_type       = "tinav5.c4r8p1"

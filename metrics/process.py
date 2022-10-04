@@ -5,9 +5,17 @@
 import sys, os, re, datetime
 
 def main() -> int:
-    process_powertop()
+    watts = process_powertop()
     process_output()
-    process_date()
+    time_sec = process_date()
+    watts += process_iddle_consumption(time_sec)
+    watts += process_traffic()
+    watts = round(watts, 2)
+    print(f"Total consumption: {watts}(Wh)")
+
+    with open(os.path.join('totals', 'total.txt'), "w") as f:
+        f.write(str(watts))
+
     return 0
 
 
@@ -42,11 +50,12 @@ def process_powertop():
             return total
 
 
-    total = sum([process_file(file) for file in os.listdir('metrics') if file.startswith('power-')])
+    total = round(sum([process_file(file) for file in os.listdir('metrics') if file.startswith('power-')]),2)
     print(f"Total energy consumption: {total}")
     
-    with open(os.path.join('totals', 'energy.txt'), "a") as f:
+    with open(os.path.join('totals', 'energy.txt'), "w") as f:
         f.write(str(total))
+    return total
 
 
 """
@@ -86,6 +95,73 @@ def process_date():
 
     with open(os.path.join('totals', 'time.txt'), "w") as out:
         out.write(f"{(stop - start)}")
+
+    return (stop - start).total_seconds()
+
+
+def process_iddle_consumption(time_sec):
+    SERVER_CORES = 48
+    SERVER_RAM = 1024
+    SERVER_BASE_CONSUMPTION = 400 
+
+    compute_idle_consumption = 0
+
+    with open("../main.tf") as f:
+        
+        def process_line(line):
+            gr = re.search('tinav([0-9]?)\.c([0-9]*)r([0-9]*)p([0-9]*)', line)
+            if gr:
+                gen, cores, ram, perf = [int(i) for i in gr.groups()]
+                if perf == 2:
+                    cores /= 2
+                elif perf == 3:
+                    cores /= 4
+                
+                nb_vm_per_server = min(SERVER_CORES / cores, SERVER_RAM / ram)
+                compute_idle_consumption = SERVER_BASE_CONSUMPTION / nb_vm_per_server * time_sec / 3600
+
+                print(f"gen: {gen}, cores: {cores}, ram: {ram}, perf: {perf}, part: {nb_vm_per_server}, vm idle consumption: {compute_idle_consumption}")
+                return compute_idle_consumption
+            return 0
+        
+        compute_idle_cons = round(sum([process_line(line) for line in f.readlines()]), 2)
+    
+    print("total compute idle consumption: ", compute_idle_cons)
+
+    with open(os.path.join('totals', 'compute_idle_cons.txt'), "w") as out:
+        out.write(f"{compute_idle_cons}")
+
+    return compute_idle_cons
+
+
+def process_traffic():
+    CONSUMPTION_PER_GB = 100 # Wh/GB
+    def process_file(path):
+
+        def process_line(line):
+            # 12:36:39      6.51      5.01
+            gr = re.search("[0-9:]*[ ]*([0-9.]+)[ ]*([0-9.]+)", line)
+            if gr:
+                kbs_in, kbs_out = [float(i) for i in gr.groups()]
+                return kbs_in + kbs_out
+            return 0
+
+        with open(os.path.join('metrics', path)) as f:
+            total = sum([process_line(i) for i in f.readlines()])
+            print(f"Total traffic for {path}: {total}")
+            return total
+
+
+    traffic = sum([process_file(file) for file in os.listdir('metrics') if file.startswith('ifstat_')])
+    traffic = round(traffic/(1024*1024),4)
+    consumption = round(traffic * CONSUMPTION_PER_GB,2)
+    print(f"Total traffic: {traffic}(GB), Traffic power consumption: {consumption}(Wh)")
+    
+    with open(os.path.join('totals', 'traffic.txt'), "w") as f:
+        f.write(f"Total traffic: {traffic}(GB), Traffic power consumption: {consumption}(Wh)")
+    
+    return consumption
+
 
 if __name__ == '__main__':
     sys.exit(main())

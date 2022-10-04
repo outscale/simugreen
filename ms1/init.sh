@@ -94,3 +94,6 @@ sudo systemctl start ms1.service
 mkdir /data/logs
 mkdir /data/metrics
 sudo apt install powertop -y
+
+# Install ifstat (must be installed on all VMs!)
+sudo apt install ifstat -y 
