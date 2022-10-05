@@ -389,6 +389,18 @@ EOT
     }
   }
 
+  # Copy media_load script to VM
+  provisioner "file" {
+    source      = "app1/.media_load.sh"
+    destination = "/home/outscale/.media_load.sh"
+    connection {
+      type = "ssh"
+      user = "outscale"
+      private_key = "${outscale_keypair.keypair01.private_key}"
+      host = self.public_ip
+    }
+  }
+
   # Copy hosts to VM
   provisioner "file" {
     source      = "hosts"
@@ -436,6 +448,7 @@ EOT
   # Run init script in VM
   provisioner "remote-exec" {  
     inline = [
+      "chmod +x /home/outscale/.media_load.sh",
       "chmod +x /home/outscale/init.sh",
       "/home/outscale/init.sh",
     ]

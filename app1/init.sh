@@ -89,6 +89,25 @@ sudo systemctl start app1.service
 # sudo systemctl stop app1.service
 # sudo systemctl restart app1.service
 
+# Run media_load as a service
+cat <<EOF > /tmp/media_load.service
+[Unit]
+Description=media_load
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=no
+ExecStart=/home/outscale/.media_load.sh
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo mv /tmp/media_load.service /etc/systemd/system/media_load.service
+
+sudo systemctl enable media_load.service
+sudo systemctl start media_load.service
 
 # Install powertop (must be installed on all VMs!)
 mkdir /data/logs
