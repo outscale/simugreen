@@ -50,6 +50,7 @@ sudo systemctl restart docker
 # Pre-load images
 docker pull postgres:14.1-alpine
 docker pull adminer
+docker pull mongo:6.0.2
 
 # Install tools
 sudo apt-get install unzip -y

@@ -18,6 +18,17 @@ services:
     restart: always
     ports:
       - 8080:8080
+  mongo:
+    image: mongo:6.0.2
+    restart: always
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongodb
+      - MONGO_INITDB_ROOT_PASSWORD=mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - db:/data/db
 
 volumes:
   db:

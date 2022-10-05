@@ -57,6 +57,23 @@ resource "outscale_security_group_rule" "hackathon_web" {
   }
 }
 
+# SG MongoDB
+resource "outscale_security_group" "hackathon_mongodb" {
+    security_group_name = "hackathon-mongodb"
+}
+
+# SG MondoDB rule
+resource "outscale_security_group_rule" "hackathon_mongodb" {
+  flow              = "Inbound"
+  security_group_id = outscale_security_group.hackathon_mongodb.id
+  rules {
+    from_port_range = "27017"
+    to_port_range   = "27017"
+    ip_protocol     = "tcp"
+    ip_ranges       = ["0.0.0.0/0"]
+  }
+}
+
 # SG Postgres
 resource "outscale_security_group" "hackathon_postgre" {
     security_group_name = "hackathon-postgres"
@@ -96,7 +113,7 @@ resource "outscale_vm" "hackathon_db1" {
   image_id      = "ami-bb490c7e"
   vm_type       = "tinav5.c4r8p1"
   keypair_name  = "${outscale_keypair.keypair01.keypair_name}"
-  security_group_ids = [outscale_security_group.hackathon_common.security_group_id, outscale_security_group.hackathon_postgre.security_group_id]
+  security_group_ids = [outscale_security_group.hackathon_common.security_group_id, outscale_security_group.hackathon_postgre.security_group_id, outscale_security_group.hackathon_mongodb.security_group_id]
   tags {
     key   = "name"
     value = "hackathon_db1"
