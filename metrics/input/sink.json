@@ -1,0 +1,6 @@
+{
+	"1": {
+		"type": "sink",
+		"arguments": {"filename": "json.path", "jsondata" : "json on string format" }
+	}
+}
