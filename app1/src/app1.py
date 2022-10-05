@@ -5,6 +5,7 @@ import shutil
 
 from store_price import clone_product, sum_of_prices, delete_product
 from prime_numbers import prime_numbers, sum_prime_numbers
+from transport_stream import parse_transport_stream
 
 # See README.md for details
 
@@ -62,6 +63,8 @@ def main():
                         output = delete_product(**command.get("arguments"))
                     elif command_type == "sum_of_prices":
                         output = sum_of_prices(**command.get("arguments"))      
+                    elif command_type == "parse_transport_stream":
+                        output = parse_transport_stream(**command.get("arguments"))
 
                     else:
                         output = f"{command.get('type')} not handled"

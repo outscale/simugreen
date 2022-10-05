@@ -1,0 +1,33 @@
+{
+	
+	"arte": {
+		"type": "parse_transport_stream",
+		"arguments": {
+			"filename": "/data/media/test_arte.ts"
+		}
+	},
+	"m6": {
+		"type": "parse_transport_stream",
+		"arguments": {
+			"filename": "/data/media/test_m6.ts"
+		}
+	},
+	"astra": {
+		"type": "parse_transport_stream",
+		"arguments": {
+			"filename": "/data/media/test_astra.ts"
+		}
+	},
+	"natgeo": {
+		"type": "parse_transport_stream",
+		"arguments": {
+			"filename": "/data/media/test_natgeo.ts"
+		}
+	},
+	"luxetv": {
+		"type": "parse_transport_stream",
+		"arguments": {
+			"filename": "/data/media/test_luxetv.ts"
+		}
+	}
+}
