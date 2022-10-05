@@ -74,6 +74,18 @@ resource "outscale_security_group_rule" "hackathon_mongodb" {
   }
 }
 
+# SG MondoDB rule
+resource "outscale_security_group_rule" "hackathon_mongo_express" {
+  flow              = "Inbound"
+  security_group_id = outscale_security_group.hackathon_mongodb.id
+  rules {
+    from_port_range = "8081"
+    to_port_range   = "8081"
+    ip_protocol     = "tcp"
+    ip_ranges       = ["0.0.0.0/0"]
+  }
+}
+
 # SG Postgres
 resource "outscale_security_group" "hackathon_postgre" {
     security_group_name = "hackathon-postgres"
