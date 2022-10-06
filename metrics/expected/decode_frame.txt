@@ -1,0 +1,131 @@
+1 Invalid frame
+2 {
+    "FOS": "CC29",
+    "FFC": "4678",
+    "MetrologicalSerialNumber": "60171400E800139A",
+    "CustomerSerialNumber": "0F575432303138353137303030303031",
+    "Backflow": {
+        "value": 0,
+        "unit": "m3"
+    },
+    "SignalStrenght": {
+        "value": -56,
+        "unit": "dbm"
+    },
+    "SignalQuality": {
+        "value": -10,
+        "unit": "dbm"
+    },
+    "Alarms": "00820000",
+    "Battery Remaining": {
+        "value": 7300,
+        "unit": "days"
+    },
+    "Operating Time": {
+        "value": 0,
+        "unit": "days"
+    },
+    "Customer Location": "0000000000000000",
+    "Operator Specific Data": "00",
+    "Date_Time": {
+        "value": "2000-01-09T04:59:00Z",
+        "storage": 1
+    },
+    "BaseIndex": {
+        "value": 0,
+        "unit": "m3",
+        "storage": 1
+    },
+    "CompactProfile": [
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T04:44:00Z"
+        },
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T04:29:00Z"
+        },
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T04:14:00Z"
+        },
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T03:59:00Z"
+        }
+    ]
+}
+3 Invalid FOS
+4 Frame doesn't start with 79
+5 {
+    "FOS": "23FE",
+    "FFC": "2F05",
+    "MetrologicalSerialNumber": "3B31F125B7A00300",
+    "CustomerSerialNumber": "1862012D022C022A022D022D022E022E",
+    "Backflow": {
+        "value": 771894530,
+        "unit": "m3"
+    },
+    "SignalStrenght": {
+        "value": 12034,
+        "unit": "dbm"
+    },
+    "SignalQuality": {
+        "value": 2,
+        "unit": "dbm"
+    },
+    "Alarms": "30020000",
+    "Battery Remaining": {
+        "value": 7300,
+        "unit": "days"
+    },
+    "Operating Time": {
+        "value": 0,
+        "unit": "days"
+    },
+    "Customer Location": "0000000000000000",
+    "Operator Specific Data": "00",
+    "Date_Time": {
+        "value": "2000-01-09T04:59:00Z",
+        "storage": 1
+    },
+    "BaseIndex": {
+        "value": 0,
+        "unit": "m3",
+        "storage": 1
+    },
+    "CompactProfile": [
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T04:44:00Z"
+        },
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T04:29:00Z"
+        },
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T04:14:00Z"
+        },
+        {
+            "value": 0,
+            "unit": "m3",
+            "storage": 1,
+            "date": "2000-01-09T03:59:00Z"
+        }
+    ]
+}

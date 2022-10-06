@@ -2,5 +2,13 @@
 	"1": {
 		"type": "fact",
 		"arguments": {"n": 10}
+	},
+	"2": {
+		"type": "fact",
+		"arguments": {"n": -3}
+	},
+    "3": {
+		"type": "fact",
+		"arguments": {"n": 500 }
 	}
 }

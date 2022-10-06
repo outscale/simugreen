@@ -2,6 +2,10 @@ import json
 import os
 import time
 import shutil
+from fact import cmd_fact
+from decrypt_frame import decode_frame
+from generateDLMSCMD import templating_dlms 
+from x_max import get_x_max
 
 from store_price import clone_product, sum_of_prices, delete_product
 from prime_numbers import prime_numbers, sum_prime_numbers
@@ -66,6 +70,14 @@ def main():
                         output = sum_of_prices(**command.get("arguments"))      
                     elif command_type == "parse_transport_stream":
                         output = parse_transport_stream(**command.get("arguments"))
+                    elif command_type == "cmd_fact":
+                        output = cmd_fact(**command.get("arguments"))
+                    elif command_type == "get_x_max":
+                        output = get_x_max(**command.get("arguments"))
+                    elif command_type == "templating_dlms":
+                        output = template(**command.get("arguments"))
+                    elif command_type == "decode_frame":
+                        output = decode_frame(**command.get("arguments"))          
                     elif command_type == "sink_aggregation":
                         output = sink_aggregation(**command.get("arguments"))
 

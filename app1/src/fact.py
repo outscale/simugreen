@@ -1,9 +1,12 @@
 import sys
-## fact example 
-## fact n 
-## n integer number
-## commande_type fact
-## args : 10  
+""" 
+#### factorial function example ### 
+ fact n 
+ n integer number
+ commande_type fact
+ args : n , positive integer 
+ in  case of of negative return 0
+"""
 
 def factorielle(a):
     if a <2 :
@@ -11,10 +14,7 @@ def factorielle(a):
     else:
         return a*factorielle(a-1)
 
-if len(sys.argv)>1 :
-    if type(3) == type(int(sys.argv[1])) :
-        print(str(factorielle(int(sys.argv[1]))))
-    else:
-        print("usage fact $number")
-else:
-    print("usage fact $number")
+def cmd_fact(n):
+    value=0
+    value=str(factorielle(n))
+    return value
