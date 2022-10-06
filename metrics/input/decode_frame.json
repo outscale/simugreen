@@ -1,7 +1,7 @@
 {
 	"1": {
 		"type": "decode_frame",
-		"arguments": {"frame": 3}
+		"arguments": {"frame": "3"}
 	},
 	"2": {
 		"type": "decode_frame",

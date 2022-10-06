@@ -17,7 +17,7 @@ return the list of md5 for each xml string generated in list format
 
 
 def templating_dlms(filename_id,dt_start,dt_stop):
-	file = open(filename_id,"r")
+    file = open(filename_id,"r")
     templateName = "data/media/tpl.xml" 
 
     tplFile = open(templateName,"r")

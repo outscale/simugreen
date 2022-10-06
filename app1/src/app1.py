@@ -4,7 +4,7 @@ import time
 import shutil
 from fact import cmd_fact
 from decrypt_frame import decode_frame
-from generateDLMSCMD import generate_tpl
+from generateDLMSCMD import templating_dlms 
 from x_max import get_x_max
 
 from store_price import clone_product, sum_of_prices, delete_product
@@ -75,7 +75,7 @@ def main():
                         output = get_x_max(**command.get("arguments"))
                     elif command_type == "templating_dlms":
                         output = template(**command.get("arguments"))
-                    elif command_type == "decrypt_frame":
+                    elif command_type == "decode_frame":
                         output = decode_frame(**command.get("arguments"))          
                     else:
                         output = f"{command.get('type')} not handled"
