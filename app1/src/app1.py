@@ -6,6 +6,7 @@ import shutil
 from store_price import clone_product, sum_of_prices, delete_product
 from prime_numbers import prime_numbers, sum_prime_numbers
 from transport_stream import parse_transport_stream
+from sink_aggregation import sink_aggregation
 
 # See README.md for details
 
@@ -65,6 +66,8 @@ def main():
                         output = sum_of_prices(**command.get("arguments"))      
                     elif command_type == "parse_transport_stream":
                         output = parse_transport_stream(**command.get("arguments"))
+                    elif command_type == "sink_aggregation":
+                        output = sink_aggregation(**command.get("arguments"))
 
                     else:
                         output = f"{command.get('type')} not handled"

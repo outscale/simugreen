@@ -1,0 +1,124 @@
+{
+	"1": {
+		"type": "sink_aggregation",
+		"arguments": {
+            "header": {
+                "identifier": "GTW02",
+                "uploadTime" : 1664979668,
+                "manufacturerName" : "Sagemcom"
+            },
+            "wifiData": [
+                {
+                    "eventTime" : 1664978268,
+                    "deviceType": "PC",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "2_4GHZ",
+                    "rssi": -40
+                },
+                {
+                    "eventTime" : 1664978168,
+                    "deviceType": "PC",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "2_4GHZ",
+                    "rssi": -68
+                },
+                {
+                    "eventTime" : 1664978268,
+                    "deviceType": "PC",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "2_4GHZ",
+                    "rssi": -76
+                },
+                {
+                    "eventTime" : 1664978468,
+                    "deviceType": "PC",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "5GHZ",
+                    "rssi": -44
+                },
+                {
+                    "eventTime" : 1664978568,
+                    "deviceType": "PC",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "5GHZ",
+                    "rssi": -48
+                },
+                {
+                    "eventTime" : 1664978668,
+                    "deviceType": "PC",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "5GHZ",
+                    "rssi": -47
+                }
+                
+            ]
+        }
+	},
+	"2": {
+		"type": "sink_aggregation",
+		"arguments": {
+            "header": {
+                "identifier": "GTW01",
+                "uploadTime" : 1664979989,
+                "manufacturerName" : "Sagemcom"
+            },
+            "wifiData": [
+                {
+                    "eventTime" : 1664979456,
+                    "deviceType": "IPhone",
+                    "bytesSent": 87860,
+                    "bytesReceived" : 896413,
+                    "connection": "5GHZ",
+                    "rssi": -84
+                },
+                {
+                    "eventTime" : 1664979556,
+                    "deviceType": "IPhone",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "5GHZ",
+                    "rssi": -82
+                },
+                {
+                    "eventTime" : 1664979656,
+                    "deviceType": "IPhone",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "6GHZ",
+                    "rssi": -78
+                },
+                {
+                    "eventTime" : 1664979756,
+                    "deviceType": "IPhone",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "2_4GHZ",
+                    "rssi": -59
+                },
+                {
+                    "eventTime" : 1664979856,
+                    "deviceType": "IPhone",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "2_4GHZ",
+                    "rssi": -62
+                },
+                {
+                    "eventTime" : 1664979956,
+                    "deviceType": "IPhone",
+                    "bytesSent": 72540,
+                    "bytesReceived" : 150542,
+                    "connection": "2_4GHZ",
+                    "rssi": -57
+                }
+                
+            ]
+        }
+	}
+}
