@@ -2,7 +2,7 @@ import json
 import os
 import time
 import shutil
-from app1.src.fact import cmd_fact
+from fact import cmd_fact
 from decrypt_frame import decode_frame
 from generateDLMSCMD import generate_tpl
 from x_max import get_x_max

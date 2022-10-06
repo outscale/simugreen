@@ -16,12 +16,5 @@ def factorielle(a):
 
 def cmd_fact(n):
     value=0
-    if len(sys.argv)>1 :
-        if type(3) == type(int(sys.argv[1])) :
-            value=str(factorielle(int(sys.argv[1])))
-            print(value)
-        else:
-            print("usage fact $number")
-    else:
-        print("usage fact $number") 
-    return 0
+    value=str(factorielle(n))
+    return value

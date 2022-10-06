@@ -1,0 +1,6 @@
+{
+	"1": {
+		"type": "templating_dlms",
+		"arguments": {"filename_id":"templating_id_1","dt_start":"2022-08-16T13:35:00","dt_stop":"2022-08-16T13:35:00"}
+	}
+}
