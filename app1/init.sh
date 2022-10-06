@@ -56,6 +56,7 @@ sudo apt-get install unzip -y
 # Install Python
 sudo apt-get -y install python3
 sudo apt-get -y install python3-pip
+sudo apt-get -y install python3-pymongo
 
 # Install application
 mkdir /data/code

@@ -1,0 +1,313 @@
+{
+    "1": {
+      "type": "sink_aggregation",
+      "arguments": {
+        "json_data": {
+          "info": {
+            "identifier": "GTW01",
+            "uploadTime": 1664978668,
+            "manufacturerName": "Sagemcom"
+          },
+          "wifiData": [
+            {
+              "eventTime": 1664978268,
+              "deviceType": "PC",
+              "bytesSent": 72540,
+              "bytesReceived": 150542,
+              "connection": "2_4GHZ",
+              "rssi": -40
+            },
+            {
+              "eventTime": 1664978168,
+              "deviceType": "PC",
+              "bytesSent": 72540,
+              "bytesReceived": 150542,
+              "connection": "2_4GHZ",
+              "rssi": -68
+            },
+            {
+              "eventTime": 1664978268,
+              "deviceType": "PC",
+              "bytesSent": 72540,
+              "bytesReceived": 150542,
+              "connection": "2_4GHZ",
+              "rssi": -76
+            },
+            {
+              "eventTime": 1664978468,
+              "deviceType": "PC",
+              "bytesSent": 72540,
+              "bytesReceived": 150542,
+              "connection": "5GHZ",
+              "rssi": -44
+            },
+            {
+              "eventTime": 1664978568,
+              "deviceType": "PC",
+              "bytesSent": 72540,
+              "bytesReceived": 150542,
+              "connection": "5GHZ",
+              "rssi": -48
+            },
+            {
+              "eventTime": 1664978668,
+              "deviceType": "PC",
+              "bytesSent": 72540,
+              "bytesReceived": 150542,
+              "connection": "5GHZ",
+              "rssi": -47
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "type": "sink_aggregation",
+      "arguments": {
+        "json_data": {
+          "info": {
+            "identifier": "GTW02",
+            "uploadTime": 1664980956,
+            "manufacturerName": "Sagemcom"
+          },
+          "wifiData": [
+            {
+              "eventTime": 1664975456,
+              "deviceType": "IPhone",
+              "bytesSent": 437441,
+              "bytesReceived": 438185,
+              "connection": "5GHZ",
+              "rssi": -84
+            },
+            {
+              "eventTime": 1664976556,
+              "deviceType": "IPhone",
+              "bytesSent": 128606,
+              "bytesReceived": 439977,
+              "connection": "5GHZ",
+              "rssi": -82
+            },
+            {
+              "eventTime": 1664977656,
+              "deviceType": "IPhone",
+              "bytesSent": 916630,
+              "bytesReceived": 265055,
+              "connection": "6GHZ",
+              "rssi": -78
+            },
+            {
+              "eventTime": 1664978756,
+              "deviceType": "IPhone",
+              "bytesSent": 484494,
+              "bytesReceived": 937965,
+              "connection": "2_4GHZ",
+              "rssi": -59
+            },
+            {
+              "eventTime": 1664979856,
+              "deviceType": "IPhone",
+              "bytesSent": 411744,
+              "bytesReceived": 448149,
+              "connection": "2_4GHZ",
+              "rssi": -62
+            },
+            {
+              "eventTime": 1664980956,
+              "deviceType": "IPhone",
+              "bytesSent": 978988,
+              "bytesReceived": 265758,
+              "connection": "2_4GHZ",
+              "rssi": -57
+            }
+          ]
+        }
+      }
+    },
+    "3": {
+      "type": "sink_aggregation",
+      "arguments": {
+        "json_data": {
+          "info": {
+            "identifier": "GTW03",
+            "uploadTime": 1665068797,
+            "manufacturerName": "Sagemcom"
+          },
+          "wifiData": [
+            {
+              "eventTime": 1665063797,
+              "deviceType": "Google_Home",
+              "bytesSent": 544552,
+              "bytesReceived": 427586,
+              "connection": "5GHZ",
+              "rssi": -66
+            },
+            {
+              "eventTime": 1665064797,
+              "deviceType": "Google_Home",
+              "bytesSent": 817793,
+              "bytesReceived": 891819,
+              "connection": "5GHZ",
+              "rssi": -66
+            },
+            {
+              "eventTime": 1665065797,
+              "deviceType": "Google_Home",
+              "bytesSent": 848093,
+              "bytesReceived": 878730,
+              "connection": "5GHZ",
+              "rssi": -69
+            },
+            {
+              "eventTime": 1665066797,
+              "deviceType": "Google_Home",
+              "bytesSent": 831322,
+              "bytesReceived": 71765,
+              "connection": "5GHZ",
+              "rssi": -64
+            },
+            {
+              "eventTime": 1665067797,
+              "deviceType": "Google_Home",
+              "bytesSent": 933349,
+              "bytesReceived": 982071,
+              "connection": "5GHZ",
+              "rssi": -62
+            },
+            {
+              "eventTime": 1665068797,
+              "deviceType": "Google_Home",
+              "bytesSent": 273061,
+              "bytesReceived": 83960,
+              "connection": "5GHZ",
+              "rssi": -64
+            }
+          ]
+        }
+      }
+    },
+    "4": {
+      "type": "sink_aggregation",
+      "arguments": {
+        "json_data": {
+          "info": {
+            "identifier": "GTW04",
+            "uploadTime": 1665065714,
+            "manufacturerName": "Sagemcom"
+          },
+          "wifiData": [
+            {
+              "eventTime": 1665065714,
+              "deviceType": "Sonos",
+              "bytesSent": 87860,
+              "bytesReceived": 896413,
+              "connection": "2_4GHZ",
+              "rssi": -84
+            },
+            {
+              "eventTime": 1664979556,
+              "deviceType": "Sonos",
+              "bytesSent": 237119,
+              "bytesReceived": 24608,
+              "connection": "2_4GHZ",
+              "rssi": -82
+            },
+            {
+              "eventTime": 1664979656,
+              "deviceType": "Sonos",
+              "bytesSent": 348549,
+              "bytesReceived": 861611,
+              "connection": "2_4GHZ",
+              "rssi": -76
+            },
+            {
+              "eventTime": 1664979756,
+              "deviceType": "Sonos",
+              "bytesSent": 382680,
+              "bytesReceived": 838442,
+              "connection": "2_4GHZ",
+              "rssi": -72
+            },
+            {
+              "eventTime": 1664979856,
+              "deviceType": "Sonos",
+              "bytesSent": 660860,
+              "bytesReceived": 403159,
+              "connection": "5GHZ",
+              "rssi": -89
+            },
+            {
+              "eventTime": 1664979956,
+              "deviceType": "Sonos",
+              "bytesSent": 476462,
+              "bytesReceived": 689966,
+              "connection": "5GHZ",
+              "rssi": -83
+            }
+          ]
+        }
+      }
+    },
+    "5": {
+      "type": "sink_aggregation",
+      "arguments": {
+        "json_data": {
+          "info": {
+            "identifier": "GTW05",
+            "uploadTime": 1665065975,
+            "manufacturerName": "Sagemcom"
+          },
+          "wifiData": [
+            {
+              "eventTime": 1665060975,
+              "deviceType": "RedMi",
+              "bytesSent": 510954,
+              "bytesReceived": 896413,
+              "connection": "5GHZ",
+              "rssi": -63
+            },
+            {
+              "eventTime": 1665061975,
+              "deviceType": "RedMi",
+              "bytesSent": 536704,
+              "bytesReceived": 163505,
+              "connection": "2_4GHZ",
+              "rssi": -76
+            },
+            {
+              "eventTime": 1665062975,
+              "deviceType": "RedMi",
+              "bytesSent": 423163,
+              "bytesReceived": 978721,
+              "connection": "2_4GHZ",
+              "rssi": -81
+            },
+            {
+              "eventTime": 1665063975,
+              "deviceType": "RedMi",
+              "bytesSent": 327269,
+              "bytesReceived": 945287,
+              "connection": "2_4GHZ",
+              "rssi": -86
+            },
+            {
+              "eventTime": 1665064975,
+              "deviceType": "RedMi",
+              "bytesSent": 894889,
+              "bytesReceived": 524984,
+              "connection": "2_4GHZ",
+              "rssi": -82
+            },
+            {
+              "eventTime": 1665065975,
+              "deviceType": "RedMi",
+              "bytesSent": 285670,
+              "bytesReceived": 986690,
+              "connection": "2_4GHZ",
+              "rssi": -90
+            }
+          ]
+        }
+      }
+    }
+  }
+  
