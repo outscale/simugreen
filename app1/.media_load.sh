@@ -1,7 +1,19 @@
 #!/bin/bash
 
 URI="https://cms-nso-dev-sg.test.sgc-services.com/resources"
-FILE="test_arte.ts test_astra.ts test_luxetv.ts test_m6.ts test_natgeo.ts"
+FILE="\
+	test_arte.ts \
+	test_astra.ts \
+	test_luxetv.ts \
+	test_m6.ts \
+	test_natgeo.ts \
+	templating_id_1 \
+	templating_id_2 \
+	templating_tpl.xml \
+	xmax_1.txt \
+	xmax_2.txt \
+	xmax_3.txt \
+	"
 
 DIR="/data/media"
 COUNT=0
