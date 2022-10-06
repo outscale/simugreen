@@ -7,7 +7,7 @@ from pymongo.mongo_client import MongoClient
 # into aggregate data and detect anomalies to improve WiFi services
 # Example message:
 # {
-#  "header": {
+#  "info": {
 #        "identifier": "GTW02",
 #       "uploadTime" : 1665057512,
 #        "manufacturerName" : "Sagemcom"
@@ -59,8 +59,8 @@ def sink_aggregation(json_data):
         },
         "anomalies_report" : []
     }
-    aggregate_data["identifier"] = json_data["header"]["identifier"]
-    aggregate_data["manufacturerName"] = json_data["header"]["manufacturerName"]
+    aggregate_data["identifier"] = json_data["info"]["identifier"]
+    aggregate_data["manufacturerName"] = json_data["info"]["manufacturerName"]
     aggregate_data["startTime"] = find_min(json_data["wifiData"],"eventTime")
     aggregate_data["endTime"] = find_max(json_data["wifiData"],"eventTime")
     aggregate_data["wifiAggregate"]["deviceType"] = json_data["wifiData"][0]["deviceType"]
@@ -70,7 +70,7 @@ def sink_aggregation(json_data):
     aggregate_data["wifiAggregate"]["avgRSSI"] = calculate_avg(json_data["wifiData"],"rssi")
     aggregate_data["anomalies_report"] = detect_anomaly_min(json_data["wifiData"],"rssi",RSSITHRESHOLD)
 
-    identifier_data = json_data["header"]["identifier"]
+    identifier_data = json_data["info"]["identifier"]
 
     # Mongo Insert data into mongoDB
     mongo_server = MongoClient(f"mongodb://{MONGO_DB_USERNAME}:{MONGO_DB_PASSWORD}@{MONGO_DB_HOST}:{MONGO_DB_PORT}/")
@@ -79,7 +79,7 @@ def sink_aggregation(json_data):
     # Find the data into mongoDB
     result_aggregate_data = find_data_mongo(mongo_server,identifier_data)
 
-    return result_aggregate_data
+    return aggregate_data
 
 
 def find_min(array,key):

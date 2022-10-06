@@ -2,7 +2,7 @@
 	"1": {
 		"type": "sink_aggregation",
 		"arguments": {
-            "header": {
+            "info": {
                 "identifier": "GTW02",
                 "uploadTime" : 1664979668,
                 "manufacturerName" : "Sagemcom"
@@ -63,7 +63,7 @@
 	"2": {
 		"type": "sink_aggregation",
 		"arguments": {
-            "header": {
+            "info": {
                 "identifier": "GTW01",
                 "uploadTime" : 1664979989,
                 "manufacturerName" : "Sagemcom"
