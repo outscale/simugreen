@@ -1,13 +1,13 @@
 {
 	"1": {
 		"type": "get_x_max",
-		"arguments": {"path":"data/x_max_1.txt","n": 1}
+		"arguments": {"path":"data/media/x_max_1.txt","n": 1}
 	},"2": {
 		"type": "get_x_max",
-		"arguments": {"path":"data/x_max_2.txt","n": 30}
+		"arguments": {"path":"data/media/x_max_2.txt","n": 30}
 	}
 	,"3": {
 		"type": "get_x_max",
-		"arguments": {"path":"data/x_max_3.txt","n": 3}
+		"arguments": {"path":"data/media/x_max_3.txt","n": 3}
 	}
 }
