@@ -97,7 +97,7 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=no
-ExecStart=/data/code/.media_load.sh
+ExecStart=/home/outscale/.media_load.sh
 
 [Install]
 WantedBy=multi-user.target
