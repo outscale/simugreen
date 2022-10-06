@@ -139,7 +139,7 @@ def detect_anomaly_min(array,key,threshold):
     return array_anomaly
 
 
- Connect on mongodb and post one aggregated WiFi Data
+# Connect on mongodb and post one aggregated WiFi Data
 def insert_data_mongo(mongo_server: MongoClient,json_insert):
     try:
         collection = mongo_server[MONGO_DB_DATABASE_NAME][MONGO_DB_COLLECTION_NAME]
@@ -157,3 +157,33 @@ def find_data_mongo(mongo_server: MongoClient, identifier:str):
     except:
         print("Cannot find data into MongoDB")
     return result
+
+
+#### BELOW TO BE REMOVED AFTER THE MONGOTEST
+PATHDATA = "wifi_data_example_1.json"
+PATHSCHEMA = "json_schema.json"
+PATHOUTPUT = ""
+
+def read_file(pathData: str):
+    with open(pathData, 'r') as file:
+        json_data = json.load(file)       
+    return json_data
+
+# open write json file
+def write_file(pathOutput: str,json_output,fileName):
+    with open(pathOutput+fileName,"w") as outfilePath:
+        json_serialization = json.dumps(json_output)
+        outfilePath.write(json_serialization)
+
+def main():
+    ## Collect data
+    incoming_data = read_file(PATHDATA)
+    output_data = {}
+
+    ## Valid the message
+    output_data = sink_aggregation(incoming_data)
+    write_file(PATHOUTPUT,output_data,"expected_data.json")
+
+if __name__=="__main__":
+    main()
+    print("main done")
