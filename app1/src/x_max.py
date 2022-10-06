@@ -32,7 +32,7 @@ def max_in_list(s):
             m=i
             key=kv[0]
     
-    return key+","+m
+    return key+","+str(m)
 
 def get_x_max(path,n):
     nbmax=int(n)
@@ -45,7 +45,7 @@ def get_x_max(path,n):
     while len(keys) < nbmax :
         max=max_in_list(s)
         keys.append(max.split(",")[0])
-        s=s.replace("("+max+");").replace(";("+max+")")
+       
     print (str(keys))
     return str(keys)
 
