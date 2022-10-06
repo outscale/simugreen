@@ -3,6 +3,20 @@
 This file is used to parse the mpeg-ts file in order to get the
 delta between PCR and PTS and in order to get stream element statistics
 
+MPEG-TS stream is the usual format used for IPTV (TV over IP), the format
+is basic, here some elements:
+    - MPEG-TS is composed of 188 Bytes packets;
+    - Each packet describes an stream elements (Video, Audio, Subtitles,
+    Program information, ...);
+    - All packets are not used for streaming a video...
+    - Each video or audio packet own a PTS (timestamp) in order to know
+    when the element stream is played;
+    - Usually video and audio packets are played following a given clock
+    called PCR;
+    - During streaming (real time), the delta between the packet arrival
+    and the PCR is very important, this is something usually monitored
+    in the stream pipeline.
+
 """
 
 import sys
@@ -344,7 +358,7 @@ def getDeltaStats (listDelta):
             minVal = delta
         if (delta > maxVal):
             maxVal = delta
-    return { 'min': minVal, 'max': maxVal, 'average':total/len(listDelta)}
+    return { 'min': int(minVal), 'max': int(maxVal), 'average':int(total/len(listDelta))}
 
 def getTrackStat (pid, count, pts):
     firstPacket = 0
@@ -359,7 +373,7 @@ def getTrackStat (pid, count, pts):
     duration = pts[lastPacket]['pts'] / 90 - pts[firstPacket]['pts'] / 90
     size = count * 188
 
-    return { 'duration': duration / 1000, 'size': size, 'bandwidth': (8 * 1000 * size) / duration }
+    return { 'duration': int(duration / 1000), 'size': int(size), 'bandwidth': int((8 * 1000 * size) / duration) }
 
 def getPidStats (pidList, pcr, pts):
     stats = []
