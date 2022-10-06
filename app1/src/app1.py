@@ -75,7 +75,7 @@ def main():
                     elif command_type == "get_x_max":
                         output = get_x_max(**command.get("arguments"))
                     elif command_type == "templating_dlms":
-                        output = template(**command.get("arguments"))
+                        output = templating_dlms(**command.get("arguments"))
                     elif command_type == "decode_frame":
                         output = decode_frame(**command.get("arguments"))          
                     elif command_type == "sink_aggregation":

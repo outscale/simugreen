@@ -1,6 +1,3 @@
-import io
-import sys
-
 #computing a list of max from a key/value input
 # input :
 #     * a filename to a file with the list of couple of letter(key) and an integer (value) as (a,3) separate by ';' # output 
@@ -45,9 +42,9 @@ def get_x_max(path,n):
     while len(keys) < nbmax :
         max=max_in_list(s)
         keys.append(max.split(",")[0])
-       
-    print (str(keys))
-    return str(keys)
+        s=s.replace("("+str(max)+");","").replace(";("+str(max)+")","")
+
+    return str(sorted(keys))
 
 
 

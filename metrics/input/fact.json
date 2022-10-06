@@ -1,14 +1,22 @@
 {
 	"1": {
-		"type": "fact",
+		"type": "cmd_fact",
 		"arguments": {"n": 10}
 	},
 	"2": {
-		"type": "fact",
+		"type": "cmd_fact",
 		"arguments": {"n": -3}
 	},
     "3": {
-		"type": "fact",
+		"type": "cmd_fact",
 		"arguments": {"n": 500 }
-	}
+	},
+    "4": {
+		"type": "cmd_fact",
+		"arguments": {"n": 0 }
+	},
+    "5": {
+		"type": "cmd_fact",
+		"arguments": {"n": 1 }
+	}		
 }
