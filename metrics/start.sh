@@ -2,9 +2,12 @@ SSH="ssh -o StrictHostKeyChecking=no -i ~/.ssh/hackathon.rsa"
 SCP="scp -i ~/.ssh/hackathon.rsa"
 
 # Clean 
-rm -rf output/*
-rm -rf metrics/*
-rm -rf totals/*
+rm -rf output
+rm -rf metrics
+rm -rf totals
+mkdir output
+mkdir metrics
+mkdir totals
 
 # Get IPs of all VMs 
 # If new vm is added add it here

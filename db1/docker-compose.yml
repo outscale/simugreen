@@ -10,7 +10,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - db:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
       - /home/outscale/db_init.sql:/docker-entrypoint-initdb.d/create_tables.sql
   adminer:
     image: adminer
@@ -28,7 +28,7 @@ services:
     ports:
       - '27017:27017'
     volumes:
-      - db:/data/db
+      - mongo:/data/db
   mongo-express :
     image : mongo-express:0.54
     restart: always
@@ -44,11 +44,18 @@ services:
       ME_CONFIG_MONGODB_URL : mongodb://mongodb:mongodb@localhost:27017/
 
 volumes:
-  db:
+  postgres:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/data/db'
+      device: '/data/postgres'
+
+  mongo:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/data/mongo'      
 
 

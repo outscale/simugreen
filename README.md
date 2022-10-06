@@ -62,11 +62,8 @@ Think about:
 │   ├── input - folder with commands to run
 │   │   ├── prime.json
 │   │   └── store_prices.json
-│   ├── metrics - empty folder used by start.sh
-│   ├── output -  empty folder used by start.sh
 │   ├── process.py - script used by start.sh
 │   ├── start.sh - main script to run the evaluation
-│   ├── totals -  empty folder used by start.sh
 │   └── wait_termination.py - script used by start.sh
 ├── ms1 - installation of the microservice 1 in VM
 │   ├── init.sh - script to run b yTerraform in VM after its creation to install the ms1
@@ -92,6 +89,8 @@ Your delivery is a GitHab repository with an updated project.
 
 The scripts in this project are for the bash shell. If you have a Windows computer you can use a virtual machine running in VirtualBox on your computer or a virtual machine in DS Outscale cloud.
 
+See the instructions below.
+
 3. Installed Terraform
 
 We use Terraform to deploy the environment into the cloud. Please [install it](https://learn.hashicorp.com/tutorials/terraform/install-cli).
@@ -109,6 +108,16 @@ You can work with account using:
 - [VS Code plugin osc-viewer](https://marketplace.visualstudio.com/items?itemName=outscale.osc-viewer)
 
 For this competition the only thing you really need is Terraform.
+
+# Install VM in DS Outscale cloud for Windows users
+If you have a Windows computer you can use a virtual machine to deploy the platform.
+
+1. Open [Cockpit](https://cockpit.outscale.com/) and create a virtual mashine using any Linux image (ex: Ubuntu 20).
+2. Connect to VM par ssh
+3. [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+4. Install zip ```sudo apt-get install zip -y```
+4. Clone the project (you may need to [generate a new SSH key and add it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent))
+5. Install the platform as described below.
 
 # Platform installation
 

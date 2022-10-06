@@ -205,8 +205,10 @@ vscode.zip
 
 hosts
 
-metrics/output/*
-metrics/totals/*
-metrics/metrics/*
+metrics/output
+metrics/totals
+metrics/metrics
 
 tmp
+
+src.zip

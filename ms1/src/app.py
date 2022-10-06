@@ -39,7 +39,8 @@ To test the method:
 """
 @app.route('/product_items/<product_id>')
 def product_items(product_id):
-
+    conn = None
+    cur = None
     try:
         conn = psycopg2.connect(
             host=HOST,
@@ -60,9 +61,10 @@ def product_items(product_id):
         return jsonify(e.messages), 400
 
     finally:
-        if conn:
+        if cur:
             cur.close()
-            conn.close()        
+        if conn:
+            conn.close()     
 
 
 """
@@ -80,7 +82,8 @@ To test the method:
 @app.route('/product_item', methods=['PUT'])
 def add_product_item():
     params = request.json
-
+    conn = None
+    cur = None
     try:
         conn = psycopg2.connect(
             host=HOST,
@@ -100,8 +103,9 @@ def add_product_item():
         return jsonify(e.messages), 400
 
     finally:
-        if conn:
+        if cur:
             cur.close()
+        if conn:
             conn.close()
 
 
@@ -115,7 +119,8 @@ To test the method:
 """
 @app.route('/product/<product_id>', methods=['DELETE'])
 def delete_product(product_id):
-
+    conn = None
+    cur = None
     try:
         conn = psycopg2.connect(
             host=HOST,
@@ -134,6 +139,7 @@ def delete_product(product_id):
         return jsonify(e.messages), 400
 
     finally:
-        if conn:
+        if cur:
             cur.close()
+        if conn:
             conn.close()

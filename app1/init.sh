@@ -63,6 +63,9 @@ mkdir /data/input
 mkdir /data/output
 mkdir /data/log
 
+unzip src.zip
+mv app1/src/* /data/code/
+
 
 # Run app1 as a service
 cat <<EOF > /tmp/app1.service
@@ -73,7 +76,7 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python3 /home/outscale/app1.py
+ExecStart=/usr/bin/python3 /data/code/app1.py
 
 [Install]
 WantedBy=multi-user.target
@@ -85,10 +88,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable app1.service
 sudo systemctl start app1.service
 
-# To stop and restart:
-# sudo systemctl stop app1.service
-# sudo systemctl restart app1.service
-
 # Run media_load as a service
 cat <<EOF > /tmp/media_load.service
 [Unit]
@@ -98,7 +97,7 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=no
-ExecStart=/home/outscale/.media_load.sh
+ExecStart=/data/code/.media_load.sh
 
 [Install]
 WantedBy=multi-user.target

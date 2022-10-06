@@ -19,7 +19,8 @@ echo '/dev/sda1 /data ext4    defaults,nofail        0       2' | sudo tee --app
 sudo chown outscale:outscale /data
 
 ## create folders in /data
-mkdir /data/db
+mkdir /data/postgres
+mkdir /data/mongo
 
 # Install Docker (https://docs.docker.com/engine/install/ubuntu/)
 sudo apt-get update -y

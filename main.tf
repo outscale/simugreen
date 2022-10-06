@@ -389,6 +389,22 @@ EOT
     }
   }
 
+  # Pack src
+  provisioner "local-exec" {
+    command = "zip app1/src.zip app1/src/*"
+  }
+  # Copy src.zip file to VM
+  provisioner "file" {
+    source      = "app1/src.zip"
+    destination = "/home/outscale/src.zip"
+    connection {
+      type = "ssh"
+      user = "outscale"
+      private_key = "${outscale_keypair.keypair01.private_key}"
+      host = self.public_ip
+    }
+  }
+
   # Copy init script to VM
   provisioner "file" {
     source      = "app1/init.sh"
@@ -417,38 +433,6 @@ EOT
   provisioner "file" {
     source      = "hosts"
     destination = "/home/outscale/hosts"
-    connection {
-      type = "ssh"
-      user = "outscale"
-      private_key = "${outscale_keypair.keypair01.private_key}"
-      host = self.public_ip
-    }
-  }
-
-  # Copy *.py files to VM
-  provisioner "file" {
-    source      = "app1/src/app1.py"
-    destination = "/home/outscale/app1.py"
-    connection {
-      type = "ssh"
-      user = "outscale"
-      private_key = "${outscale_keypair.keypair01.private_key}"
-      host = self.public_ip
-    }
-  }
-  provisioner "file" {
-    source      = "app1/src/prime_numbers.py"
-    destination = "/home/outscale/prime_numbers.py"
-    connection {
-      type = "ssh"
-      user = "outscale"
-      private_key = "${outscale_keypair.keypair01.private_key}"
-      host = self.public_ip
-    }
-  }
-  provisioner "file" {
-    source      = "app1/src/store_price.py"
-    destination = "/home/outscale/store_price.py"
     connection {
       type = "ssh"
       user = "outscale"

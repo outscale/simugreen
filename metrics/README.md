@@ -16,11 +16,8 @@ PLEASE DO NOT CHANGE THE SCRIPTS IN THIS FOLDER!
 ├── input - folder with commands to run
 │   ├── prime.json
 │   └── store_prices.json
-├── metrics - empty folder used start.sh
-├── output -  empty folder used start.sh
 ├── process.py - script used by start.sh
 ├── start.sh - main script to run the evaluation
-├── totals -  empty folder used by start.sh
 └── wait_termination.py - script used by start.sh
 ```
 
