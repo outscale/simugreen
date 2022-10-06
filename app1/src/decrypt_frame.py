@@ -2,8 +2,21 @@ import json
 from collections import OrderedDict
 import datetime
 
+"""
+In this case, it's a classic frame decoding problem
+
+inputs : 
+frame : a frame in hexa with type string
+
+output:  
+json decoded with no blank type string
+or the error message
+
+"""
+
+
 DATE_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
-FOS_LIST = ["CC29"]
+FOS_LIST = ["CC29","23FE"]
 
 
 def to_unsigned(hexa_string, n):
