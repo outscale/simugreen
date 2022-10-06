@@ -9,6 +9,6 @@
 	},
     "3": {
 		"type": "fact",
-		"arguments": {"n": 1307674368000}
+		"arguments": {"n": 500 }
 	}
 }
