@@ -42,11 +42,11 @@ def get_x_max(path,n):
     flist=open(path,'r')
     s=flist.read()
     keys=[]
-    while keys.len < nbmax :
+    while len(keys) < nbmax :
         max=max_in_list(s)
         keys.append(max.split(",")[0])
         s=s.replace("("+max+");").replace(";("+max+")")
-
+    print (str(keys))
     return str(keys)
 
 
