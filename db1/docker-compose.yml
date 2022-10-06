@@ -18,35 +18,30 @@ services:
     restart: always
     ports:
       - 8080:8080
-  mongo :
-    image : mongo:4.2
-    hostname : "mongo"
-    restart : always
-    environment :
-      MONGO_INITDB_ROOT_USERNAME : mongodb
-      MONGO_INITDB_ROOT_PASSWORD : mongodb
-    labels :
-      NAME : "mongo"
-    ports :
-      - 27017:27017
+  mongo:
+    image: mongo:4.2
+    restart: always
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongodb
+      - MONGO_INITDB_ROOT_PASSWORD=mongodb
+    ports:
+      - '27017:27017'
     volumes:
-      - ./.docker/mongodb/data/db/:/data/db/
-      - ./.docker/mongodb/data/log/:/var/log/mongodb/
-
+      - mongo:/data/db
   mongo-express :
     image : mongo-express:0.54
-    hostname : "mongo-express"
-    restart:  always
+    restart: always
+    container_name: mongo-express
     depends_on:
       - "mongo"
     ports :
       - 8081:8081
     environment :
+      VCAP_APP_HOST : 0.0.0.0
       ME_CONFIG_MONGODB_ADMINUSERNAME : mongodb
       ME_CONFIG_MONGODB_ADMINPASSWORD : mongodb
-      ME_CONFIG_MONGODB_URL : mongodb://mongodb:mongodb@mongo:27017/
-    labels :
-      NAME : "mongo-express"
+      ME_CONFIG_MONGODB_URL : mongodb://mongodb:mongodb@localhost:27017/
 
 volumes:
   postgres:
@@ -62,3 +57,4 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/data/mongo'
+
