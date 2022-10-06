@@ -47,7 +47,7 @@ def get_x_max(path_to_list_key_value,x):
         keys.append(max.split(",")[0])
         s=s.replace("("+max+");").replace(";("+max+")")
 
-    return keys
+    return str(keys)
 
 
 
