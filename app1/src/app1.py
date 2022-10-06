@@ -2,6 +2,7 @@ import json
 import os
 import time
 import shutil
+from app1.src.fact import cmd_fact
 
 from store_price import clone_product, sum_of_prices, delete_product
 from prime_numbers import prime_numbers, sum_prime_numbers
@@ -65,7 +66,8 @@ def main():
                         output = sum_of_prices(**command.get("arguments"))      
                     elif command_type == "parse_transport_stream":
                         output = parse_transport_stream(**command.get("arguments"))
-
+                    elif command_type == "cmd_fact":
+                        output = cmd_fact(**command.get("arguments"))
                     else:
                         output = f"{command.get('type')} not handled"
 
