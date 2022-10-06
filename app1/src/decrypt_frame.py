@@ -131,27 +131,19 @@ def frame_to_json(frame):
     ])
 
 
-def decode_process_run(frame):
+def decode_frame(frame):
+    str=""
     if len(frame) != 144:
-        print("Invalid frame")
+        str="Invalid frame"
     elif frame[0:2] != "79":
-        print("Frame doesn't start with 79")
+        str="Frame doesn't start with 79"
     elif frame[2:6] not in FOS_LIST:
-        print("Invalid FOS")
+        str="Invalid FOS"
     else:
         frame_dict = frame_to_json(frame)
-        print(json.dumps(frame_dict, indent=4))
+        str=json.dumps(frame_dict, indent=4)
+    return str
 
-
-if __name__ == "__main__":
-    # arg = sys.argv
-    # frame = arg[1]
-    while True:
-        frame = input("Please enter the frame: \n")
-        if frame == 'Exit':
-            break
-        decode_process_run(frame)
-    print("Done")
 
 
 

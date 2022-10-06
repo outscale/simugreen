@@ -2,57 +2,47 @@
 import os
 import re
 import sys
-###
-# This scripts using two files to produces n command dlms files  based on
-#  - list of meter( an iot object)
-#  - list of IDS of this meter
-#  elements changed in the template are the id,date start and date stop
-#
-#
+import hashlib
+
+""""
+ In this case you need to produce n files from a template, liste of id and two dates.
+dlms is a standard of communication in energy with iot object (smart meter)
+You need to remplace the id of the template by the one in file  and change the sart and the stop date.
 
 
 
-args = sys.argv
-print(args)
-if ( (len(args)>1) and args[1]== "-h"):
-	sys.exit("usage : python "+args[0]+" [filename_id] [filename_template] [date_start] [date_stop]")
+@filename_id : filename of the the list of  id 
+@dt_start : a date in format YYYY-MM-DDTHH:MM:SS
+@dt_stop : a date in format YYYY-MM-DDTHH:MM:SS
+return the list of md5 for each xml string generated in list format ([...,...,...])
 
+"""
 
-filename = "id.txt" if  (len(args)< 2) else args[1]
+def templating_dlms(filename_id,dt_start,dt_dtop):
+	file = open(filename_id,"r")
 
-file = open(filename,"r")
+	templateName = "data/media/tpl.xml" 
 
-templateName = "tpl.xml" if  (len(args)< 3) else args[2]
+	tplFile = open(templateName,"r")
+	tpl = tplFile.read()
+	tplFile.close();
 
-tplFile = open(templateName,"r")
-tpl = tplFile.read()
-tplFile.close();
+	dstart = "2019-08-16T13:35:00" if  (len(args)< 4) else args[3]
+	dend = "2019-08-16T13:35:00" if  (len(args)< 5) else args[4]
 
-dstart = "2019-08-16T13:35:00" if  (len(args)< 4) else args[3]
-dend = "2019-08-16T13:35:00" if  (len(args)< 5) else args[4]
+	md5s=[]
 
-
-try:
-	for  (dirpath, dirnames, files)  in os.walk("results"):   
-		if  files != []:
-			for f in files : os.remove("results/"+f)
-		os.rmdir("results")
-	os.mkdir("results")
-except OSError as e:
-	print("creation directory failed\n"+e)
-else:
 	for line in file:
-		print(line)
-		newID = line.replace("\n","")
-		prefix = "Activation_2.76"
-		outName = "results/"+prefix+'_'+newID+".xml"
-		out = open(outName,"w")
-		str = re.sub("<devID>METER(.)+</devID>","<devID>"+newID+"</devID>",tpl,1)
-		str = re.sub('taskId="'+prefix+'"','taskId="'+prefix+'_'+newID+'"',str,1)
-		str = re.sub('<start>([^<])+</start>','<start>'+dstart+'</start>',str,1)
-		str = re.sub('<stop>([^<])+</stop>','<stop>'+dend+'</stop>',str,1)
-		print(str)
-		out.writelines(str)
-		out.close()
+			print(line)
+			newID = line.replace("\n","")
+			prefix = "Activation_2.76"
+			outName = "results/"+prefix+'_'+newID+".xml"
+			
+			str = re.sub("<devID>METER(.)+</devID>","<devID>"+newID+"</devID>",tpl,1)
+			str = re.sub('taskId="'+prefix+'"','taskId="'+prefix+'_'+newID+'"',str,1)
+			str = re.sub('<start>([^<])+</start>','<start>'+dstart+'</start>',str,1)
+			str = re.sub('<stop>([^<])+</stop>','<stop>'+dend+'</stop>',str,1)
+			md5s.append(hashlib.md5(str))
+    return md5s
 
-file.close();
+
