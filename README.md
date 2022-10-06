@@ -153,6 +153,7 @@ If you work with the platform from different locations share (copy) the private 
 
 The next section explayns how to destroy the platform, but if you make some changes such as security group reconfiguration or if you add a new resource you can run this script again without destroing the platform. 
 
+
 ## Destroy platform
 If you want to restart your work or test your updated scripts you have first destroy the platform. 
 ```
@@ -162,6 +163,24 @@ The script destroys ALL its resources in the cloud.
 Then you can re-create it again.
 
 **Attention!** If you make any updates in the running platform, such as code update or package installation make sure that you save all this in the project before destroing!
+
+## Troubleshooting
+In case of problems deploying or destroying the platform, such as 400 or 500 errors, follow these steps:
+
+1. Try to destroy the platform by ```./platform_destroy.sh```.
+2. If it does not help:
+    - Log into the [Cockpit](https://cockpit.outscale.com/login/) and delete all created resources in the following order:
+        1. Compute -> Instances (terminate all instances)
+        2. Network/Secirity -> Security Groups (delete all groups except "default")
+        3. Network/Secirity -> Keypairs (delete it)
+    - Delete these items in the project folder (depending on OS some of them may be missing):
+        - .terraform.lock.hcl
+        - .terraform.tfstate.lock.info
+        - terraform.tfstate
+        - .terraform.lock.hcl
+        - .terraform
+    - Init terraform ```terraform init```
+3. Deploy platform
 
 ## Connect to VMs by ssh:
 When the platform is up, you can connect to machines by SSH. To simplify this the scripts are created in the project root for all VMs.
