@@ -44,7 +44,7 @@ def get_x_max(path,n):
         keys.append(max.split(",")[0])
         s=s.replace("("+str(max)+");","").replace(";("+str(max)+")","")
 
-    return str(sorted(keys))
+    return str(keys)
 
 
 
