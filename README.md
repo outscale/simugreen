@@ -203,7 +203,7 @@ You can use whatever method you want to work with code.
 - ...
 
 
-# Connect to VMs from VS Code remotely
+## Connect to VMs from VS Code remotely
 
 1. Install [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) plugin in VS Code on your computer.
 2. Install openssh-server on a VM:
@@ -234,7 +234,7 @@ Host <vm_ip>
 You can see and modify any files on this VM as if VS Code is running on this VM. 
 
 
-# Running VS Code on a virtual machine
+## Running VS Code on a virtual machine
 
 You can also run VS Code as a Web application directly on VMs and work with it via any browser.
 
