@@ -359,7 +359,8 @@ In the VM the file is copied and running in ```/home/outscale/``` folder as a se
 - To stop: ```sudo systemctl stop ms1.service```
 - To start: ```sudo systemctl start ms1.service```
 - To restart: ```sudo systemctl restart ms1.service```
-- To see service log: ```journalctl -u ms1.service```
+- To see service full log: ```journalctl -u ms1.service```
+- To see service log in real time: ```journalctl -u ms1.service -f```
 
 **Attention:** If you update the code in place into the VM don't forget to restart the service.
 
