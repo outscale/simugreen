@@ -1,4 +1,5 @@
 # Competition task for **Hackathon Green Code** 7-8/10/22
+[![Project Sandbox](https://docs.outscale.com/fr/userguide/_images/Project-Sandbox-yellow.svg)](https://docs.outscale.com/en/userguide/Open-Source-Projects.html)
 
 The scripts in this repository deploy the platform into DS Outscale cloud, initialize and configure the virtual machines, and install the applications.
 
