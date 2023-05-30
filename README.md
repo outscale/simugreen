@@ -1,24 +1,11 @@
-# Competition task for **Hackathon Green Code** 7-8/10/22
+# Simugreen - simulator for more eco-conscious cloud adoption
 [![Project Sandbox](https://docs.outscale.com/fr/userguide/_images/Project-Sandbox-yellow.svg)](https://docs.outscale.com/en/userguide/Open-Source-Projects.html)
 
-The scripts in this repository deploy the platform into DS Outscale cloud, initialize and configure the virtual machines, and install the applications.
+This project demonstrates how to estimate the energy consumption of an information system in the cloud.
 
-The goal of this competition is to **minimize the power consumption** of this platform.
+The platform should not be considered as an example to follow for real production systems. It was created with the maximum simplification of all its aspects. A real platform is much more complicated. But, all this complication is not the subject of this simulator. 
 
-The platform should not be considered as an example to follow for real production systems. It was created with the maximum simplification of all its aspects. A real platform is much more complicated. But, all this complication is not the subject of this competition. 
-
-The idea is to let anyone find ways of optimization. People with different profiles can identify and improve something here. It can be architecture, infrastructure, and code optimization. You are free to do whatever you want to reduce consumption. 
-
-Start with forking the project and use your fork to install the platform and run the tests. Then, depending on your knowledge and preferences you can focus only on some aspects or you can recreate all and rewrite the code in another language. All this is up to you. 
-
-In the end, you have to give us your GitHub repo with an updated system. We install and test it with the same commands. Make sure that all is automatically deployable and the evaluation tests pass! 
-
-If you think that the task is too difficult for you, do not give up! Think about optimization and prepare your pitch!
-
-## Evaluation critaria
-**Only the power consumtion is taken into consideration**. Performance, security, fault tolerance, best coding practices are NOT the subject of this competition.
-
-Think about:
+## Some optimisation factors that can be tested by this simulator
 
 - The more resources you reserve, the more you consume even if they are not fully utilized.
 - Avoid doing the same thing more than once.
@@ -82,9 +69,7 @@ Think about:
 # Preconditions
 1. GitHub account
 
-You need a GitHub account. You start by forking [this repository](https://github.com/outscale-dev/hackathon202210) into your GitHub account.
-
-Your delivery is a GitHab repository with an updated project.
+You need a GitHub account. You start by forking into your GitHub account.
 
 2. Linux or Mac computer
 
@@ -96,10 +81,7 @@ See the instructions below.
 
 We use Terraform to deploy the environment into the cloud. Please [install it](https://learn.hashicorp.com/tutorials/terraform/install-cli).
 
-
-4. Access and Secret keys for DS Outscale cloud account.
-
-Every team has a separate account. Access and secret keys give you an access to it. 
+4. Access and Secret keys for 3DS Outscale cloud account.
 
 You can work with account using:
 
@@ -108,9 +90,7 @@ You can work with account using:
 - [Cockpit](https://cockpit.outscale.com/login/) - Web UI. Normally, you don't need to use it, but if you want please use AccessKey as login and SecretKey as password.
 - [VS Code plugin osc-viewer](https://marketplace.visualstudio.com/items?itemName=outscale.osc-viewer)
 
-For this competition the only thing you really need is Terraform.
-
-# Install VM in DS Outscale cloud for Windows users
+# Install VM in 3DS Outscale cloud for Windows users
 If you have a Windows computer you can use a virtual machine to deploy the platform.
 
 1. Open [Cockpit](https://cockpit.outscale.com/) and create a virtual mashine using any Linux image (ex: Ubuntu 20).
