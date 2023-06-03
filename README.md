@@ -75,6 +75,8 @@ You need a GitHub account. You start by forking into your GitHub account.
 
 The scripts in this project are for the bash shell. If you have a Windows computer you can use a virtual machine running in VirtualBox on your computer or a virtual machine in DS Outscale cloud.
 
+* For Mac user, please be sure to install *brew* in your computer by using the instruction on: https://brew.sh
+
 See the instructions below.
 
 3. Installed Terraform
