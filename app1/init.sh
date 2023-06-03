@@ -106,6 +106,7 @@ EOF
 
 sudo mv /tmp/media_load.service /etc/systemd/system/media_load.service
 
+sudo systemctl daemon-reload
 sudo systemctl enable media_load.service
 sudo systemctl start media_load.service
 
